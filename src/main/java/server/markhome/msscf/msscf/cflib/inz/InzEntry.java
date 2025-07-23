@@ -37,7 +37,7 @@ import java.util.Properties;
  * When Inz does the top-level translation search, it probes the InzEntry data in path-order sequence until
  * it finds a match for the requested key.  If the key ultimately could not be found, it returns "!key!".
  * 
- * InzEntry is not intended to be instantiated directly by users of the CFLib, but rather is used internally
+ * InzEntry is not intended to be instantiated directly by users of CFLib, but rather is used internally
  * by Inz to manage the language entries loaded from the properties files in the langPath.
  * 
  * @author Mark Stephen Sobkow
@@ -73,6 +73,8 @@ public class InzEntry {
      * 
      * If a properties file does not contain the required properties or has mismatched language codes,
      * an IllegalArgumentException is thrown.
+     * 
+     * In the case of resource entries, it expects to find a "propnames.txt" file that lists the names of the properties files.
      * 
      * @throws IOException if there is an error reading the directory or files.
      * @throws RuntimeException if there is an error loading the language files.
