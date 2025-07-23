@@ -44,9 +44,8 @@ import java.util.Properties;
  * @see Inz
  * @see InzLang
  */
-class InzEntry {
+public class InzEntry {
     protected String pathName = null;
-    protected File pathEntry = null;
     protected HashMap<String, InzLang> langs = new HashMap<>();
     
     /**
@@ -60,10 +59,6 @@ class InzEntry {
             throw new IllegalArgumentException("Path name cannot be null or empty");
         }
         this.pathName = pathName;
-        this.pathEntry = new File(pathName);
-        if (!pathEntry.exists() || !pathEntry.isDirectory()) {
-            throw new IllegalArgumentException("Path entry must be a valid directory: " + pathName);
-        }
         loadLangs();
     }
 
@@ -93,80 +88,157 @@ class InzEntry {
      * It does not handle malformed files or unexpected formats, which should be validated before calling this method.
      */
     protected final void loadLangs() {
-        try (DirectoryStream<Path> dir = Files.newDirectoryStream(pathEntry.toPath(), "*.properties")) {
-            for (Path p : dir) {
-                File file = p.toFile();
-                if (file.isFile() && file.getName().endsWith(".properties")) {
-                    String langCode = file.getName().substring(0, file.getName().length() - 11); // Remove ".properties"
-                    Properties properties = new Properties();
-                    try (InputStream input = new FileInputStream(file)) {
-                        properties.load(input);
-                    } catch (IOException e) {
-                        throw new RuntimeException("Failed to load language file: " + file.getName(), e);
-                    }
-                    
-                    String loadedLangCodeString = properties.getProperty(InzLang.LANG_CODE_PROP);
-                    if (loadedLangCodeString == null || loadedLangCodeString.isEmpty()) {
-                        throw new IllegalArgumentException("Language file " + file.getName() + " must contain " +
-                                InzLang.LANG_CODE_PROP + " property.");
-                    }
-                    if (!loadedLangCodeString.toLowerCase().equals(langCode.toLowerCase())) {
-                        throw new IllegalArgumentException("Language file " + file.getName() + " has mismatched language code: " +
-                                loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase());
-                    }
-                    String englishName = properties.getProperty(InzLang.ENGLISH_NAME_PROP);
-                    String nlsName = properties.getProperty(InzLang.NLS_NAME_PROP);
-                    if (englishName == null || nlsName == null || englishName.isEmpty() || nlsName.isEmpty()) {
-                        throw new IllegalArgumentException("Language file " + file.getName() + " must contain " +
-                                InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties.");
-                    }
-                    String fallbackLangCode = properties.getProperty(InzLang.FALLBACK_LANG_PROP);
-
-                    // Create an InzLang instance and add it to the langs map
-                    InzLang lang = new InzLang(langCode.toLowerCase(), englishName, nlsName, (fallbackLangCode != null ? fallbackLangCode.toLowerCase() : null));
-                    lang.setTranslations(properties);
-                    langs.put(langCode, lang);
+        // if (pathEntry == null || !pathEntry.exists() || !pathEntry.isDirectory()) {
+        //     throw new IllegalArgumentException("Path entry must be a valid directory: " + pathName);
+        // }
+        boolean isCFLibInzEntry = pathName.equals(Inz.CFLIB_INZ_PATH);
+        boolean isResourceEntry = pathName.toLowerCase().startsWith("resource:");
+        String propnames;
+        if (isResourceEntry) {
+            InputStream input = getClass().getClassLoader().getResourceAsStream(pathName.substring(9) + "/propnames.txt");
+            if (input == null) {
+                throw new IllegalArgumentException("Resource not found: " + pathName.substring(9) + "/propnames.txt for path entry " + pathName + ".");
+            }
+            try {
+                propnames = new String(input.readAllBytes());
+                propnames = propnames.replace("\r", "").trim(); // Normalize line endings
+                propnames = propnames.replace("\n", " ").trim(); // Replace newlines with spaces
+                propnames = propnames.replace("  ", " "); // Replace multiple spaces with a single space
+            }
+            catch (IOException e) {
+                throw new RuntimeException("Failed to read propnames.txt for path entry " + pathName + ".", e);
+            }
+            finally {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    // Ignore close exception
                 }
             }
+        }
+        else {
+            try (DirectoryStream<Path> dir = Files.newDirectoryStream(new File(pathName).toPath(), "*.properties")) {
+                StringBuilder sb = new StringBuilder();
+                for (Path p : dir) {
+                    File file = p.toFile();
+                    if (file.isFile() && file.getName().endsWith(".properties")) {
+                        if (sb.length() > 0) {
+                            sb.append(" ");
+                        }
+                        sb.append(file.getName());
+                    }
+                }
+                propnames = sb.toString();
+            }
+            catch (IOException e) {
+                throw new RuntimeException("Failed to read list of .properties files for path entry " + pathName + " - " + e.getMessage(), e);
+            }
+        }
+        String[] propNamesArray = propnames.split(" ");
+        for (String propname: propNamesArray) {
+            InputStream input = null;
+            Properties properties = new Properties();
+            try {
+                if (isResourceEntry) {
+                    input = getClass().getClassLoader().getResourceAsStream(pathName.substring(9) + "/" + propname);
+                }
+                else {
+                    input = new FileInputStream(new File(pathName, propname));
+                }
+                if (input == null) {
+                    throw new IllegalArgumentException("Resource not found: " + propname + " for path entry " + pathName + ".");
+                }
+                properties.load(input);
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to load language file: " + propname + " for path entry " + pathName + ".", e);
+            }
+            finally {
+                if (input != null) {
+                    try {
+                        input.close();
+                    } catch (IOException e) {
+                        // Ignore close exception
+                    }
+                }
+            }
+
+            String langCode = propname.substring(0, propname.length() - 11); // Remove ".properties"
+            String loadedLangCodeString;
+            String englishName;
+            String nlsName;
+            String fallbackLangCode;
+
+            if (isCFLibInzEntry) {
+                loadedLangCodeString = properties.getProperty(InzLang.LANG_CODE_PROP);
+                if (loadedLangCodeString == null || loadedLangCodeString.isEmpty()) {
+                    throw new IllegalArgumentException("Language file " + propname + " must contain " +
+                            InzLang.LANG_CODE_PROP + " property for path entry " + pathName + ".");
+                }
+                if (!loadedLangCodeString.toLowerCase().equals(langCode.toLowerCase())) {
+                    throw new IllegalArgumentException("Language file " + propname + " has mismatched language code: " +
+                            loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase() + " for path entry " + pathName + ".");
+                }
+                englishName = properties.getProperty(InzLang.ENGLISH_NAME_PROP);
+                nlsName = properties.getProperty(InzLang.NLS_NAME_PROP);
+                if (englishName == null || nlsName == null || englishName.isEmpty() || nlsName.isEmpty()) {
+                    throw new IllegalArgumentException("Language file " + propname + " must contain " +
+                            InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties for path entry " + pathName + ".");
+                }
+                fallbackLangCode = properties.getProperty(InzLang.FALLBACK_LANG_PROP);
+            }
+            else {
+                InzLang existingLang = Inz.CFLIB_INZ_ENTRY.getLang(langCode.toLowerCase());
+                if (existingLang != null) {
+                    loadedLangCodeString = existingLang.getLangCode();
+                    englishName = existingLang.getEnglishName();
+                    nlsName = existingLang.getNlsName();
+                    fallbackLangCode = existingLang.getFallbackLangCode();
+                }
+                else {
+                    throw new IllegalArgumentException("CFLib InzEntry does not contain language code: " + langCode + " for path entry " + pathName + ".");
+                }
+            }
+
+            // Create an InzLang instance and add it to the langs map
+            InzLang lang = new InzLang(langCode.toLowerCase(), englishName, nlsName, (fallbackLangCode != null ? fallbackLangCode.toLowerCase() : null));
+            lang.setTranslations(properties);
+            langs.put(langCode, lang);
+        }
             
-            // Link the fallback languages
-            for (InzLang lang : langs.values()) {
-                String fallbackCode = lang.getFallbackLangCode();
-                if (fallbackCode != null && !fallbackCode.isEmpty()) {
-                    InzLang fallbackLang = langs.get(fallbackCode.toLowerCase());
-                    if (fallbackLang != null) {
-                        lang.setFallbackLang(fallbackLang);
+        // Link the fallback languages
+        for (InzLang lang : langs.values()) {
+            String fallbackCode = lang.getFallbackLangCode();
+            if (fallbackCode != null && !fallbackCode.isEmpty()) {
+                InzLang fallbackLang = langs.get(fallbackCode.toLowerCase());
+                if (fallbackLang != null) {
+                    lang.setFallbackLang(fallbackLang);
+                } else {
+                    throw new IllegalArgumentException("Fallback language " + fallbackCode + " not found for language " + lang.getLangCode() + " for path entry " + pathName + ".");
+                }
+            }
+            else {
+                String iso639 = lang.getIso639();
+                String iso3166 = lang.getIso3166();
+                if (iso3166 != null) {
+                    // If no fallback is specified, set the fallback to the default English language
+                    InzLang defaultLang = langs.get(iso639.toLowerCase());
+                    if (defaultLang != null) {
+                        lang.setFallbackLang(defaultLang);
                     } else {
-                        throw new IllegalArgumentException("Fallback language " + fallbackCode + " not found for language " + lang.getLangCode());
+                        throw new IllegalArgumentException("Fallback base language " + iso639 + " not found for language " + lang.getLangCode() + " for path entry " + pathName + ".");
                     }
                 }
                 else {
-                    String iso639 = lang.getIso639();
-                    String iso3166 = lang.getIso3166();
-                    if (iso3166 != null) {
-                        // If no fallback is specified, set the fallback to the default English language
-                        InzLang defaultLang = langs.get(iso639.toLowerCase());
-                        if (defaultLang != null) {
-                            lang.setFallbackLang(defaultLang);
-                        } else {
-                            throw new IllegalArgumentException("Fallback base language " + iso639 + " not found for language " + lang.getLangCode());
-                        }
-                    }
-                    else {
-                        // If no fallback is specified and no ISO codes are available, set the fallback to "en"
-                        InzLang defaultLang = langs.get("en");
-                        if (defaultLang != null) {
-                            lang.setFallbackLang(defaultLang);
-                        } else {
-                            throw new IllegalArgumentException("Default fallback language 'en' not found for language " + lang.getLangCode().toLowerCase());
-                        }
+                    // If no fallback is specified and no ISO codes are available, set the fallback to "en"
+                    InzLang defaultLang = langs.get("en");
+                    if (defaultLang != null) {
+                        lang.setFallbackLang(defaultLang);
+                    } else {
+                        throw new IllegalArgumentException("Default fallback language 'en' not found for language " + lang.getLangCode().toLowerCase() + " for path entry " + pathName + ".");
                     }
                 }
             }
         }
-        catch (IOException e) {
-            throw new RuntimeException("Failed to read directory: " + pathEntry.getAbsolutePath(), e);
-        }   
     }
 
     /**
@@ -193,15 +265,6 @@ class InzEntry {
      */
     public String getPathName() {
         return pathName;
-    }
-
-    /**
-     * Get the path entry (File) of this InzEntry.
-     * 
-     * @return The path entry as a File object.
-     */
-    protected File getPathEntry() {
-        return pathEntry;
     }
 
     /**

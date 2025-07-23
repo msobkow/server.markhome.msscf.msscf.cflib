@@ -32,6 +32,8 @@ import java.util.ArrayList;
  */
 public class Inz {
 
+    public static final String CFLIB_INZ_PATH = "resource:server/markhome/msscf/msscf/cflib/inz/langs";
+
     /**
      * The language file path is a list of semicolon-separated path names to language file directories.
      * In each directory may be any number of 2 or 5 letter .properties files which are loaded on a per-language basis,
@@ -40,50 +42,56 @@ public class Inz {
      * language in that resource directory is "en", there is a hierarchy of accepted language codes and their fallbacks
      * defined with no actual translations in them, so the default for CFLib is to report all exceptions in English.
      */
-    protected String langPath = null;
+    protected static String langPath = CFLIB_INZ_PATH;
 
     /**
      * The language file entries matching the langPath.
      */
-    protected ArrayList<InzEntry> entries = new ArrayList<>();
+    protected static ArrayList<InzEntry> entries = new ArrayList<>();
 
     /**
-     * Default constructor for Inz.
-     * Initializes the Inz instance with the default language path.
-     * The default language path is set to "resource:server/markhome/msscf/msscf/cflib/inz/langs".
-     * This constructor can be used when no specific language path is required.
+     * The default language code used when no specific language is set.
+     * This is typically "en" for English.
      */
-    public Inz() {
-        setLangPath("resource:server/markhome/msscf/msscf/cflib/inz/langs");
-    }
+    public static final String DEFAULT_LANG_CODE = "en";
+    
+    /**
+     * The current system language code, used for the single-argument version of x().
+     */
+    protected static String systemLangCode = DEFAULT_LANG_CODE;
 
     /**
-     * Constructor for Inz with a specified language path.
-     * This constructor allows you to set a custom language path for the Inz instance.
-     * The language path can be a directory or a resource path where language files are located.
-     * If the provided path is null or empty, it defaults to "resource:server/markhome/msscf/msscf/cflib/inz/langs".
-     * @param langPath
+     * The CFLib InzEntry references resource:server/markhome/msscf/msscf/cflib/inz/langs and
+     * defines the hierarchy of language codes.  All other language codes hierarchy information
+     * is ignored and overwritten by the hierarchy information from the CFLib InzEntry.
      */
-    public Inz(String langPath) {
-        setLangPath(langPath);
+    public static final InzEntry CFLIB_INZ_ENTRY = new InzEntry(CFLIB_INZ_PATH);
+
+    /**
+     * Private constructor to prevent instantiation.
+     * This class is designed to be used as a singleton, so the constructor is private.
+     */
+    private Inz() {
+       
     }
 
     /**
      * Sets the language file path for this Inz instance.
      * This method allows you to specify a custom path for language files.
+     * Multiple directories or resource locations can be set by separating them with semicolons.
      *
      * @param langPath The path to the language files, which can be a directory or a resource path.
      */
-    public final void setLangPath(String langPath) {
-        if (langPath == null || langPath.isEmpty()) {
-            langPath = "resource:server/markhome/msscf/msscf/cflib/inz/langs";
+    public final static void setLangPath(String path) {
+        if (path == null || path.isEmpty()) {
+            throw new IllegalArgumentException("Language path cannot be null or empty.");
+        }
+        if (!path.endsWith(CFLIB_INZ_PATH)) {
+            langPath = path + ";" + CFLIB_INZ_PATH;
         }
         else {
-            if (!langPath.endsWith("resource:server/markhome/msscf/msscf/cflib/inz/langs")) {
-                langPath = langPath + ";resource:server/markhome/msscf/msscf/cflib/inz/langs";
-            }
+            langPath = path;
         }
-        this.langPath = langPath;
     }
 
     /**
@@ -92,7 +100,7 @@ public class Inz {
      *
      * @return The language file path as a String.
      */
-    public String getLangPath() {
+    public static String getLangPath() {
         return langPath;
     }
 
@@ -131,31 +139,75 @@ public class Inz {
      * String translation = inz.x("greeting", "en"); // Get translation for 'greeting' in English
      * </pre>
      */
-    public void loadLangEntries(boolean forceReload) {
+    public static void loadLangEntries(boolean forceReload) {
         if (langPath == null || langPath.isEmpty()) {
             throw new IllegalStateException("Language path is not set. Please set the language path before loading entries.");
         }
         if (forceReload) {
             entries.clear(); // Clear existing entries if force reload is requested
         }
-        String[] paths = langPath.split(";");
-        for (String path : paths) {
-            File pathEntry = new File(path);
-            if (!pathEntry.exists()) {
-                throw new IllegalArgumentException("Language path does not exist: " + path);
-            }
-            if (pathEntry.isDirectory()) {
-                InzEntry entry = new InzEntry(path);
-                try {
-                    entry.loadLangs();
-                    entries.add(entry);
-                } catch (Exception e) {
-                    throw new RuntimeException("Failed to load language entries from path: " + path, e);
+        if (entries.size() <= 1) {
+            String[] paths = langPath.split(";");
+            for (String path : paths) {
+                if (path.equals(CFLIB_INZ_PATH)) {
+                    CFLIB_INZ_ENTRY.loadLangs();
+                    entries.add(CFLIB_INZ_ENTRY); // Add the CFLib InzEntry if the path matches
+                    continue;
                 }
-            } else {
-                throw new IllegalArgumentException("Language path must be a directory: " + path);
+                File pathEntry = new File(path);
+                if (!pathEntry.exists()) {
+                    throw new IllegalArgumentException("Language path does not exist: " + path);
+                }
+                if (pathEntry.isDirectory()) {
+                    InzEntry entry = new InzEntry(path);
+                    try {
+                        entry.loadLangs();
+                        entries.add(entry);
+                    } catch (Exception e) {
+                        throw new RuntimeException("Failed to load language entries from path: " + path, e);
+                    }
+                } else {
+                    throw new IllegalArgumentException("Language path must be a directory: " + path);
+                }
             }
         }
+    }
+
+    /**
+     * Get the current system language code.
+     * This method returns the language code currently set for the system.
+     *
+     * @return The current system language code as a String.
+     */
+    public static String getSystemLangCode() {
+        return systemLangCode;
+    }
+
+    /**
+     * Set the current system language code.
+     * @param langCode
+     */
+    public static void setSystemLangCode(String langCode) {
+        if (langCode == null || langCode.isEmpty()) {
+            throw new IllegalArgumentException("Language code cannot be null or empty.");
+        }
+        systemLangCode = langCode.toLowerCase(); // Store the language code in lowercase for consistency
+    }
+
+    /**
+     * Get a translation for a given key in the current system language, probing each of the path entries in order
+     * until a non-null translation is found.  If no translation is found, it returns "!key!".
+     * @param key The translation key to look up.
+     * @return The translated string if found, or "!key!" if not found.
+     * @throws IllegalArgumentException if the key is null or empty.
+     * @see InzEntry#x(String, String)
+     * @see InzLang#x(String)
+     */
+    public static String x(String key) {
+        if (key == null || key.isEmpty()) {
+            throw new IllegalArgumentException("Key cannot be null or empty.");
+        }
+        return x(key, systemLangCode); // Use the current system language code
     }
 
     /**
@@ -169,7 +221,7 @@ public class Inz {
      * @see InzEntry#x(String, String)
      * @see InzLang#x(String)
      */
-    public String x(String key, String langCode) {
+    public static String x(String key, String langCode) {
         if (key == null || key.isEmpty()) {
             throw new IllegalArgumentException("Key cannot be null or empty.");
         }

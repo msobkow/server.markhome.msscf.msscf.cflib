@@ -59,7 +59,7 @@ import java.util.Properties;
  * 
  * @author Mark Stephen Sobkow
  */
-class InzLang implements Comparable<InzLang> {
+public class InzLang implements Comparable<InzLang> {
     public final static String LANG_CODE_PROP = "_InzLangCode";
     public final static String ENGLISH_NAME_PROP = "_InzEnglishName";
     public final static String NLS_NAME_PROP = "_InzNlsName";
@@ -251,7 +251,7 @@ class InzLang implements Comparable<InzLang> {
         if (fallbackLangCode != null && fallbackLangCode.length() == 5 && fallbackLangCode.charAt(2) != '-') {
             throw new IllegalArgumentException("5-character fallbackLangCode must be separated by a hyphen in between the pair of 2-letter codes");
         }
-        this.fallbackLangCode = fallbackLangCode.toLowerCase();
+        this.fallbackLangCode = (fallbackLangCode != null) ? fallbackLangCode.toLowerCase() : null;
     }
 
     /**
