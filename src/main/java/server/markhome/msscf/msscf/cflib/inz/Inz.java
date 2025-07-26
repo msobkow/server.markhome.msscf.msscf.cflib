@@ -31,7 +31,6 @@ import java.util.ArrayList;
  * and providing access to translations through the InzLang class.
  */
 public class Inz {
-
     public static final String CFLIB_INZ_PATH = "resource:server/markhome/msscf/msscf/cflib/inz/langs";
 
     /**
@@ -42,7 +41,11 @@ public class Inz {
      * language in that resource directory is "en", there is a hierarchy of accepted language codes and their fallbacks
      * defined with no actual translations in them, so the default for CFLib is to report all exceptions in English.
      */
-    protected static String langPath = CFLIB_INZ_PATH;
+    protected static ArrayList<InzPathEntry> pathEntries = new ArrayList<>();
+    static {
+        // Add the default CFLib Inz path entry
+        pathEntries.add(new InzPathEntry(Inz.class, CFLIB_INZ_PATH));
+    }
 
     /**
      * The language file entries matching the langPath.
@@ -65,7 +68,11 @@ public class Inz {
      * defines the hierarchy of language codes.  All other language codes hierarchy information
      * is ignored and overwritten by the hierarchy information from the CFLib InzEntry.
      */
-    public static final InzEntry CFLIB_INZ_ENTRY = new InzEntry(CFLIB_INZ_PATH);
+    public static final InzEntry CFLIB_INZ_ENTRY;
+    static {
+        CFLIB_INZ_ENTRY = new InzEntry(pathEntries.get(0));
+        entries.add(CFLIB_INZ_ENTRY);
+    }
 
     /**
      * Private constructor to prevent instantiation.
@@ -76,32 +83,31 @@ public class Inz {
     }
 
     /**
-     * Sets the language file path for this Inz instance.
-     * This method allows you to specify a custom path for language files.
-     * Multiple directories or resource locations can be set by separating them with semicolons.
-     *
-     * @param langPath The path to the language files, which can be a directory or a resource path.
+     * Add a language path entry to the list of path entries, load and initialize it, and wire it for translations
+     * @param pathEntry The InzPathEntry to add.
      */
-    public final static void setLangPath(String path) {
-        if (path == null || path.isEmpty()) {
-            throw new IllegalArgumentException("Language path cannot be null or empty.");
+    public static void addPathEntry(InzPathEntry pathEntry) {
+        if (pathEntry == null) {
+            throw new IllegalArgumentException("Path entry cannot be null.");
         }
-        if (!path.endsWith(CFLIB_INZ_PATH)) {
-            langPath = path + ";" + CFLIB_INZ_PATH;
-        }
-        else {
-            langPath = path;
+        if (!pathEntries.contains(pathEntry)) {
+            pathEntries.add(pathEntry);
+            InzEntry entry = new InzEntry(pathEntry);
+            entry.loadLangs();
+            entries.add(entry);
+        } else {
+            throw new IllegalArgumentException("Path entry already exists: " + pathEntry.getPath());
         }
     }
 
     /**
-     * Get the semicolon-separeted list of language file paths.
-     * This method returns the current language file path set for this Inz instance.
+     * Get the list of path entries.
+     * This method returns the current list of InzPathEntry objects.
      *
-     * @return The language file path as a String.
+     * @return The list of InzPathEntry objects.
      */
-    public static String getLangPath() {
-        return langPath;
+    public static ArrayList<InzPathEntry> getPathEntries() {
+        return new ArrayList<>(pathEntries); // Return a copy to prevent external modification
     }
 
     /**
@@ -140,36 +146,29 @@ public class Inz {
      * </pre>
      */
     public static void loadLangEntries(boolean forceReload) {
-        if (langPath == null || langPath.isEmpty()) {
-            throw new IllegalStateException("Language path is not set. Please set the language path before loading entries.");
+        if (pathEntries == null || pathEntries.isEmpty()) {
+            throw new IllegalStateException("Path entries are not set");
         }
         if (forceReload) {
             entries.clear(); // Clear existing entries if force reload is requested
         }
         if (entries.size() <= 1) {
-            String[] paths = langPath.split(";");
-            for (String path : paths) {
-                if (path.equals(CFLIB_INZ_PATH)) {
-                    CFLIB_INZ_ENTRY.loadLangs();
-                    entries.add(CFLIB_INZ_ENTRY); // Add the CFLib InzEntry if the path matches
-                    continue;
-                }
-                File pathEntry = new File(path);
-                if (!pathEntry.exists()) {
-                    throw new IllegalArgumentException("Language path does not exist: " + path);
-                }
-                if (pathEntry.isDirectory()) {
-                    InzEntry entry = new InzEntry(path);
-                    try {
-                        entry.loadLangs();
-                        entries.add(entry);
-                    } catch (Exception e) {
-                        throw new RuntimeException("Failed to load language entries from path: " + path, e);
-                    }
-                } else {
-                    throw new IllegalArgumentException("Language path must be a directory: " + path);
-                }
+            if (entries.isEmpty()) {
+                entries.add(CFLIB_INZ_ENTRY); // Ensure the CFLib InzEntry is
             }
+            for (int idx = 1; idx < pathEntries.size(); idx++) {
+                InzPathEntry pathEntry = pathEntries.get(idx);
+                if (pathEntry == null || pathEntry.getPath() == null || pathEntry.getPath().isEmpty()) {
+                    throw new IllegalStateException("Path entry is not set for index: " + idx);
+                }
+                InzEntry entry = new InzEntry(pathEntry);
+                try {
+                    entry.loadLangs();
+                    entries.add(entry);
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to load language entries from path: " + pathEntry.getPath(), e);
+                }
+            }   
         }
     }
 
@@ -229,12 +228,14 @@ public class Inz {
             throw new IllegalArgumentException("Language code cannot be null or empty.");
         }
         String lowerLangCode = langCode.toLowerCase();
-        for (InzEntry entry : entries) {
+        for (int i = entries.size() - 1; i >= 0; i--) {
+            InzEntry entry = entries.get(i);
             String translation = entry.x(key, lowerLangCode);
             if (translation != null) {
                 return translation; // Return the first non-null translation found
             }
         }
+        // If no translation is found, return the key wrapped in exclamation marks
         return "!" + key + "!";
     }
 }

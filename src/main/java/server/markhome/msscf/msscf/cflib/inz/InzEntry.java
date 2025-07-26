@@ -45,7 +45,7 @@ import java.util.Properties;
  * @see InzLang
  */
 public class InzEntry {
-    protected String pathName = null;
+    protected InzPathEntry pathEntry = null;
     protected HashMap<String, InzLang> langs = new HashMap<>();
     
     /**
@@ -54,11 +54,11 @@ public class InzEntry {
      * 
      * @param pathName
      */
-    public InzEntry(String pathName) {
-        if (pathName == null || pathName.isEmpty()) {
-            throw new IllegalArgumentException("Path name cannot be null or empty");
+    public InzEntry(InzPathEntry pathEntry) {
+        if (pathEntry == null) {
+            throw new IllegalArgumentException("Path entry cannot be null.");
         }
-        this.pathName = pathName;
+        this.pathEntry = pathEntry;
         loadLangs();
     }
 
@@ -90,69 +90,40 @@ public class InzEntry {
      * It does not handle malformed files or unexpected formats, which should be validated before calling this method.
      */
     protected final void loadLangs() {
-        // if (pathEntry == null || !pathEntry.exists() || !pathEntry.isDirectory()) {
-        //     throw new IllegalArgumentException("Path entry must be a valid directory: " + pathName);
-        // }
-        boolean isCFLibInzEntry = pathName.equals(Inz.CFLIB_INZ_PATH);
-        boolean isResourceEntry = pathName.toLowerCase().startsWith("resource:");
+        boolean isCFLibInzEntry = pathEntry.getPath().equals(Inz.CFLIB_INZ_PATH);
         String propnames;
-        if (isResourceEntry) {
-            InputStream input = getClass().getClassLoader().getResourceAsStream(pathName.substring(9) + "/propnames.txt");
-            if (input == null) {
-                throw new IllegalArgumentException("Resource not found: " + pathName.substring(9) + "/propnames.txt for path entry " + pathName + ".");
-            }
-            try {
-                propnames = new String(input.readAllBytes());
-                propnames = propnames.replace("\r", "").trim(); // Normalize line endings
-                propnames = propnames.replace("\n", " ").trim(); // Replace newlines with spaces
-                propnames = propnames.replace("  ", " "); // Replace multiple spaces with a single space
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Failed to read propnames.txt for path entry " + pathName + ".", e);
-            }
-            finally {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    // Ignore close exception
-                }
-            }
+        InputStream input = pathEntry.getInputStream("propnames.txt");
+        if (input == null) {
+            throw new IllegalArgumentException("Resource or file not found: " + pathEntry.getPath() + "/propnames.txt");
         }
-        else {
-            try (DirectoryStream<Path> dir = Files.newDirectoryStream(new File(pathName).toPath(), "*.properties")) {
-                StringBuilder sb = new StringBuilder();
-                for (Path p : dir) {
-                    File file = p.toFile();
-                    if (file.isFile() && file.getName().endsWith(".properties")) {
-                        if (sb.length() > 0) {
-                            sb.append(" ");
-                        }
-                        sb.append(file.getName());
-                    }
-                }
-                propnames = sb.toString();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Failed to read list of .properties files for path entry " + pathName + " - " + e.getMessage(), e);
+        try {
+            propnames = new String(input.readAllBytes());
+            propnames = propnames.replace("\r", "").trim(); // Normalize line endings
+            propnames = propnames.replace("\n", " ").trim(); // Replace newlines with spaces
+            propnames = propnames.replace("  ", " "); // Replace multiple spaces with a single space
+        }
+        catch (IOException e) {
+            throw new RuntimeException("Failed to read propnames.txt for path entry " + pathEntry.getPath(), e);
+        }
+        finally {
+            try {
+                input.close();
+            } catch (IOException e) {
+                // Ignore close exception
             }
         }
         String[] propNamesArray = propnames.split(" ");
         for (String propname: propNamesArray) {
-            InputStream input = null;
+            input = null;
             Properties properties = new Properties();
             try {
-                if (isResourceEntry) {
-                    input = getClass().getClassLoader().getResourceAsStream(pathName.substring(9) + "/" + propname);
-                }
-                else {
-                    input = new FileInputStream(new File(pathName, propname));
-                }
+                input = pathEntry.getInputStream(propname);
                 if (input == null) {
-                    throw new IllegalArgumentException("Resource not found: " + propname + " for path entry " + pathName + ".");
+                    throw new IllegalArgumentException("Resource or file not found: " + propname + " for path entry " + pathEntry.getPath());
                 }
                 properties.load(input);
             } catch (IOException e) {
-                throw new RuntimeException("Failed to load language file: " + propname + " for path entry " + pathName + ".", e);
+                throw new RuntimeException("Failed to load language resource or file: " + propname + " for path entry " + pathEntry.getPath(), e);
             }
             finally {
                 if (input != null) {
@@ -174,17 +145,17 @@ public class InzEntry {
                 loadedLangCodeString = properties.getProperty(InzLang.LANG_CODE_PROP);
                 if (loadedLangCodeString == null || loadedLangCodeString.isEmpty()) {
                     throw new IllegalArgumentException("Language file " + propname + " must contain " +
-                            InzLang.LANG_CODE_PROP + " property for path entry " + pathName + ".");
+                            InzLang.LANG_CODE_PROP + " property for path entry " + pathEntry.getPath());
                 }
                 if (!loadedLangCodeString.toLowerCase().equals(langCode.toLowerCase())) {
                     throw new IllegalArgumentException("Language file " + propname + " has mismatched language code: " +
-                            loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase() + " for path entry " + pathName + ".");
+                            loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase() + " for path entry " + pathEntry.getPath());
                 }
                 englishName = properties.getProperty(InzLang.ENGLISH_NAME_PROP);
                 nlsName = properties.getProperty(InzLang.NLS_NAME_PROP);
                 if (englishName == null || nlsName == null || englishName.isEmpty() || nlsName.isEmpty()) {
                     throw new IllegalArgumentException("Language file " + propname + " must contain " +
-                            InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties for path entry " + pathName + ".");
+                            InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties for path entry " + pathEntry.getPath());
                 }
                 fallbackLangCode = properties.getProperty(InzLang.FALLBACK_LANG_PROP);
             }
@@ -197,7 +168,7 @@ public class InzEntry {
                     fallbackLangCode = existingLang.getFallbackLangCode();
                 }
                 else {
-                    throw new IllegalArgumentException("CFLib InzEntry does not contain language code: " + langCode + " for path entry " + pathName + ".");
+                    throw new IllegalArgumentException("CFLib InzEntry does not contain language code: " + langCode + " for path entry " + pathEntry.getPath());
                 }
             }
 
@@ -215,7 +186,7 @@ public class InzEntry {
                 if (fallbackLang != null) {
                     lang.setFallbackLang(fallbackLang);
                 } else {
-                    throw new IllegalArgumentException("Fallback language " + fallbackCode + " not found for language " + lang.getLangCode() + " for path entry " + pathName + ".");
+                    throw new IllegalArgumentException("Fallback language " + fallbackCode + " not found for language " + lang.getLangCode() + " for path entry " + pathEntry.getPath());
                 }
             }
             else {
@@ -227,7 +198,7 @@ public class InzEntry {
                     if (defaultLang != null) {
                         lang.setFallbackLang(defaultLang);
                     } else {
-                        throw new IllegalArgumentException("Fallback base language " + iso639 + " not found for language " + lang.getLangCode() + " for path entry " + pathName + ".");
+                        throw new IllegalArgumentException("Fallback base language " + iso639 + " not found for language " + lang.getLangCode() + " for path entry " + pathEntry.getPath());
                     }
                 }
                 else {
@@ -236,7 +207,7 @@ public class InzEntry {
                     if (defaultLang != null) {
                         lang.setFallbackLang(defaultLang);
                     } else {
-                        throw new IllegalArgumentException("Default fallback language 'en' not found for language " + lang.getLangCode().toLowerCase() + " for path entry " + pathName + ".");
+                        throw new IllegalArgumentException("Default fallback language 'en' not found for language " + lang.getLangCode().toLowerCase() + " for path entry " + pathEntry.getPath());
                     }
                 }
             }
@@ -261,12 +232,12 @@ public class InzEntry {
     }
 
     /**
-     * Get the path name of this InzEntry.
+     * Get the path entry of this InzEntry.
      * 
-     * @return The path name as a String.
+     * @return The path entry associated with this InzEntry.
      */
-    public String getPathName() {
-        return pathName;
+    public InzPathEntry getPathEntry() {
+        return pathEntry;
     }
 
     /**
