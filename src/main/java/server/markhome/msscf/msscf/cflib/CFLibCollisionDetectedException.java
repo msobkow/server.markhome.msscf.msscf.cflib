@@ -21,6 +21,8 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 
 	protected Object indexKey = null;
@@ -57,10 +59,10 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		Object argKey )
 	{
 		super( throwingClass, methName,
-			"Collision detected"
-				+ ( ( argKey != null )
-						? " for primary key " + argKey.toString()
-						: "" ) );
+			(argKey != null)
+				? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
+					argKey.toString())
+				: Inz.x("cflib.CFLibCollisionDetectedException.default"));
 		indexKey = argKey;
 	}
 
@@ -72,10 +74,10 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		Throwable th )
 	{
 		super( throwingClass, methName,
-			"Collision detected"
-				+ ( ( argKey != null )
-						? " for primary key " + argKey.toString()
-						: "" ),
+			(argKey != null)
+				? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
+					argKey.toString())
+				: Inz.x("cflib.CFLibCollisionDetectedException.default"),
 			th );
 		indexKey = argKey;
 	}

@@ -22,6 +22,9 @@
 package server.markhome.msscf.msscf.cflib;
 
 import java.util.Calendar;
+
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 import java.math.*;
 
 public class CFLibArgumentOverflowException extends CFLibArgumentException {
@@ -84,9 +87,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be no more than "
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue) );
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -100,9 +102,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be no more than "
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -116,9 +117,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be no more than "
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -132,9 +132,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be no more than "
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -148,9 +147,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be no more than "
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -164,9 +162,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be no more than "
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -180,9 +177,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be no more than "
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -196,9 +192,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be no more than "
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -212,9 +207,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be no more than "
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -228,9 +222,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be no more than "
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -260,9 +253,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -276,9 +268,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -292,9 +283,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -308,9 +298,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -324,9 +313,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -384,9 +372,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be no more than "
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -399,9 +386,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be no more than "
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -414,9 +400,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be no more than "
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -429,9 +414,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be no more than "
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -444,9 +428,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be no more than "
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -459,9 +442,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be no more than "
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -474,9 +456,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be no more than "
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -489,9 +470,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be no more than "
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -504,9 +484,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be no more than "
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -519,9 +498,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be no more than "
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -534,9 +512,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Calendar maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -549,9 +526,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -564,9 +540,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -579,9 +554,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -594,9 +568,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentOverflowException(
@@ -609,9 +582,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 }

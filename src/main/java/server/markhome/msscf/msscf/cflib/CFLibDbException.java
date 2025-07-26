@@ -21,6 +21,8 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibDbException extends CFLibRuntimeException {
 
 	public CFLibDbException(
@@ -44,6 +46,6 @@ public class CFLibDbException extends CFLibRuntimeException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass, methName, "SQL Exception " + th.getMessage(), th );
+		super( throwingClass, methName, String.format(Inz.x("cflib.CFLibDbException.sqlexcept"), th.getMessage()), th );
 	}
 }

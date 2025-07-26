@@ -22,6 +22,9 @@
 package server.markhome.msscf.msscf.cflib;
 
 import java.util.Calendar;
+
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 import java.math.*;
 
 public class CFLibArgumentUnderflowException extends CFLibArgumentException {
@@ -84,9 +87,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be at least "
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -100,9 +102,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be at least "
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -116,9 +117,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be at least "
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -132,9 +132,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be at least "
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -148,9 +147,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be at least "
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -164,9 +162,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be at least "
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -180,9 +177,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be at least "
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -196,9 +192,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be at least "
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -212,9 +207,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be at least "
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -228,9 +222,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be at least "
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -244,9 +237,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Calendar maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -260,9 +252,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -276,9 +267,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -292,9 +282,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -308,9 +297,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -324,9 +312,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-				"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -384,9 +371,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be at least "
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -399,9 +385,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " must be at least "
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -414,9 +399,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be at least "
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -429,9 +413,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " must be at least "
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -444,9 +427,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be at least "
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -459,9 +441,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " must be at least "
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -474,9 +455,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be at least "
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -489,9 +469,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " must be at least "
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -504,9 +483,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be at least "
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -519,9 +497,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " must be at least "
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -534,9 +511,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Calendar maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -549,9 +525,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -564,9 +539,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue, maxValue));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -579,9 +553,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue, maxValue),
 			th );
 	}
 
@@ -594,9 +567,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -609,9 +581,8 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-				"value " + argValue.toString()
-				+ " must be at least "
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
+				argValue.toString(), maxValue.toString()),
 			th );
 	}
 }

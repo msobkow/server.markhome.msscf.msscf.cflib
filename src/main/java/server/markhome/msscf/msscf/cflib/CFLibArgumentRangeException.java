@@ -22,6 +22,9 @@
 package server.markhome.msscf.msscf.cflib;
 
 import java.util.Calendar;
+
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 import java.math.*;
 
 public class CFLibArgumentRangeException extends CFLibArgumentException {
@@ -85,10 +88,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " is out of the range " + Short.toString( minValue )
-				+ ".."
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -103,10 +104,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " is out of the range " + Short.toString( minValue )
-				+ ".."
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -121,10 +120,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " is out of the range " + Integer.toString( minValue )
-				+ ".."
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -139,10 +136,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " is out of the range " + Integer.toString( minValue )
-				+ ".."
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -157,10 +152,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " is out of the range " + Long.toString( minValue )
-				+ ".."
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -175,10 +168,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " is out of the range " + Long.toString( minValue )
-				+ ".."
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -193,10 +184,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " is out of the range " + Float.toString( minValue )
-				+ ".."
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -211,10 +200,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " is out of the range " + Float.toString( minValue )
-				+ ".."
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -229,10 +216,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " is out of the range " + Double.toString( minValue )
-				+ ".."
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -247,10 +232,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " is out of the range " + Double.toString( minValue )
-				+ ".."
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -265,10 +248,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -283,10 +264,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -301,10 +280,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue, minValue, maxValue));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -319,10 +296,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -337,10 +312,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -355,10 +328,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-				"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -417,10 +388,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " is out of the range " + Short.toString( minValue )
-				+ ".."
-				+ Short.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -434,10 +403,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Short.toString( argValue )
-				+ " is out of the range " + Short.toString( minValue )
-				+ ".."
-				+ Short.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -451,10 +418,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " is out of the range " + Integer.toString( minValue )
-				+ ".."
-				+ Integer.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -468,10 +433,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Integer.toString( argValue )
-				+ " is out of the range " + Integer.toString( minValue )
-				+ ".."
-				+ Integer.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -485,10 +448,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " is out of the range " + Long.toString( minValue )
-				+ ".."
-				+ Long.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -502,10 +463,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Long.toString( argValue )
-				+ " is out of the range " + Long.toString( minValue )
-				+ ".."
-				+ Long.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -519,10 +478,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " is out of the range " + Float.toString( minValue )
-				+ ".."
-				+ Float.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -536,10 +493,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Float.toString( argValue )
-				+ " is out of the range " + Float.toString( minValue )
-				+ ".."
-				+ Float.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -553,10 +508,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " is out of the range " + Double.toString( minValue )
-				+ ".."
-				+ Double.toString( maxValue ) );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -570,10 +523,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + Double.toString( argValue )
-				+ " is out of the range " + Double.toString( minValue )
-				+ ".."
-				+ Double.toString( maxValue ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -587,10 +538,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentRangeException(
@@ -604,10 +553,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()),
 			th );
 	}
 
@@ -621,10 +568,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue, minValue, maxValue));
 	}
 
 	public CFLibArgumentRangeException(
@@ -638,10 +583,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue, minValue, maxValue),
 			th );
 	}
 
@@ -655,10 +598,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal maxValue )
 	{
 		super( fieldName, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString() );
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
 	public CFLibArgumentRangeException(
@@ -672,10 +613,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( fieldName, methName, argNo, argName,
-				"value " + argValue.toString()
-				+ " is out of the range " + minValue.toString()
-				+ ".."
-				+ maxValue.toString(),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
+				argValue.toString(), minValue.toString(), maxValue.toString()),
 			th );
 	}
 }
