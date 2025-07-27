@@ -21,6 +21,8 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibEmptyArgumentException extends CFLibArgumentException {
 
 	public CFLibEmptyArgumentException(
@@ -79,7 +81,7 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		String argName )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"is null or empty" );
+			Inz.x("cflib.CFLibEmptyArgumentException.default") );
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -91,7 +93,7 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( throwingClass, methName, argNo, argName,
-			"is null or empty",
+			Inz.x("cflib.CFLibEmptyArgumentException.default"),
 			th );
 	}
 }

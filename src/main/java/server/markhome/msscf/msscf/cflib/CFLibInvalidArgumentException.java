@@ -21,6 +21,8 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibInvalidArgumentException extends CFLibArgumentException {
 
 	public CFLibInvalidArgumentException(
@@ -122,7 +124,7 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		int argNo,
 		String argName )
 	{
-		super( fieldName, methName, argNo, argName, "Invalid argument" );
+		super( fieldName, methName, argNo, argName, Inz.x("cflib.CFLibInvalidArgumentException.default") );
 	}
 
 	public CFLibInvalidArgumentException(
@@ -132,6 +134,6 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		String argName,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName, "Invalid argument", th );
+		super( fieldName, methName, argNo, argName, Inz.x("cflib.CFLibInvalidArgumentException.default"), th );
 	}
 }

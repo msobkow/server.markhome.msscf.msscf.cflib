@@ -21,6 +21,8 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 
 	protected String relnType = null;
@@ -63,9 +65,11 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		Object argKey )
 	{
 		super( throwingClass, methName,
-			relationType + " relation " + relationName
-				+ " dependents detected"
-				+ (( argKey != null ) ? " for primary key " + argKey.toString() : "" ) );
+			(argKey != null) ?
+				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
+					relationType, relationName, targetName, argKey.toString())
+				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
+					relationType, relationName, targetName));
 		relnType = relationType;
 		relnName = relationName;
 		relnTarget = targetName;
@@ -83,9 +87,11 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		Throwable th )
 	{
 		super( throwingClass, methName,
-			relationType + " relation " + relationName
-				+ " dependents detected"
-				+ (( argKey != null ) ? " for primary key " + argKey.toString() : "" ),
+			(argKey != null) ?
+				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
+					relationType, relationName, targetName, argKey.toString())
+				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
+					relationType, relationName, targetName),
 			th );
 		relnType = relationType;
 		relnName = relationName;

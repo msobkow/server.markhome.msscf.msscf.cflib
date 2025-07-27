@@ -238,4 +238,29 @@ public class Inz {
         // If no translation is found, return the key wrapped in exclamation marks
         return "!" + key + "!";
     }
+
+    /**
+     * Get a system English translation for a given key using resource path entries only.
+     * @param key The translation key to look up.
+     * @return The translated string if found, or "!key!" if not found.
+     * @throws IllegalArgumentException if the key is null or empty.
+     * @see InzEntry#x(String, String)
+     * @see InzLang#x(String)
+     */
+    public static String s(String key) {
+        if (key == null || key.isEmpty()) {
+            throw new IllegalArgumentException("Key cannot be null or empty.");
+        }
+        for (int i = entries.size() - 1; i >= 0; i--) {
+            InzEntry entry = entries.get(i);
+            if (entry.getPathEntry().getClass() != null) {
+                String translation = entry.x(key, "en");
+                if (translation != null) {
+                    return translation; // Return the first non-null translation found
+                }
+            }
+        }
+        // If no translation is found, return the key wrapped in exclamation marks
+        return "!" + key + "!";
+    }
 }
