@@ -27,9 +27,7 @@ public interface ICFLibAnyObj {
 	public String getObjName();
 	public String getObjQualifiedName();
 	public String getObjFullName();
-	@SuppressWarnings("rawtypes")
-	public ICFLibAnyObj getNamedObject( Class qualifyingClass, String objName );
+	public ICFLibAnyObj getNamedObject( Class<?> qualifyingClass, String objName );
 	public ICFLibAnyObj getNamedObject( String objName );
-	@SuppressWarnings("rawtypes")
-	public ICFLibAnyObj getObjQualifier( Class qualifyingClass );
+	public ICFLibAnyObj getObjQualifier( Class<?> qualifyingClass );
 }

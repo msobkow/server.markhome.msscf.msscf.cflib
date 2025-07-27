@@ -29,18 +29,16 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -48,9 +46,8 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -59,9 +56,8 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -71,9 +67,8 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName )
@@ -82,9 +77,8 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 			"is null" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNullArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

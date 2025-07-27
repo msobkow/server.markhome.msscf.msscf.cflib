@@ -35,18 +35,16 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -54,9 +52,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -65,9 +62,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -77,9 +73,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -91,9 +86,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -107,9 +101,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -121,9 +114,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -137,9 +129,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -151,9 +142,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -167,9 +157,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -181,9 +170,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -197,9 +185,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -211,9 +198,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -227,9 +213,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -242,9 +227,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				+ maxValue.toString() );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -258,9 +242,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -272,9 +255,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -288,9 +270,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -302,9 +283,8 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 				argValue.toString(), maxValue.toString()));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentOverflowException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

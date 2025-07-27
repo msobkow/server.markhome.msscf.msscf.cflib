@@ -29,9 +29,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		super( "Unique index violation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 					+ "() Unique index violation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
@@ -149,9 +145,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String argIndexName,
 		Object argKey )
@@ -166,9 +161,8 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 							: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUniqueIndexViolationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String argIndexName,
 		Object argKey,

@@ -23,18 +23,13 @@ package server.markhome.msscf.msscf.cflib;
 
 public class CFLibFireOnInstanceOf {
 	
-    @SuppressWarnings("rawtypes")
-	protected Class instOf = null;
+	protected Class<?> instOf = null;
 
     public CFLibFireOnInstanceOf() {
     	setInstanceOf( Object.class );
     }
 
-    public CFLibFireOnInstanceOf( @SuppressWarnings("rawtypes") Class value ) {
-    	setInstanceOf( value );
-    }
-
-    public void setInstanceOf( @SuppressWarnings("rawtypes") Class value ) {
+    public void setInstanceOf(Class<?> value) {
     	final String S_ProcName = "setInstanceOf";
         if( value == null ) {
             throw new CFLibNullArgumentException( getClass(),
@@ -45,8 +40,7 @@ public class CFLibFireOnInstanceOf {
         instOf = value;
     }
 
-    @SuppressWarnings("rawtypes")
-	public Class getInstanceOf() {
+	public Class<?> getInstanceOf() {
         return( instOf );
     }
 

@@ -25,15 +25,17 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibArgumentException extends IllegalArgumentException {
 
+	protected String localMessage = null;
+
 	public CFLibArgumentException(
 		String msg )
 	{
 		super( msg );
+		this.localMessage = msg;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -42,9 +44,8 @@ public class CFLibArgumentException extends IllegalArgumentException {
 			    ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" )));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -55,9 +56,8 @@ public class CFLibArgumentException extends IllegalArgumentException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -70,9 +70,8 @@ public class CFLibArgumentException extends IllegalArgumentException {
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg	: "" ) ));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

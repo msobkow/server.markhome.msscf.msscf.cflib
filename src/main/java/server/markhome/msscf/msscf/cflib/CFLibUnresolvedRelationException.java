@@ -29,9 +29,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		super( "Unresolved relation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 					+ "() Unresolved relation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
@@ -149,9 +145,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String relationType,
 		String relationName,
@@ -169,9 +164,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 						+ " could not be resolved" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnresolvedRelationException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String relationType,
 		String relationName,

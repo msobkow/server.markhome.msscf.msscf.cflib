@@ -29,9 +29,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		super( "Unsupported class" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 					+ "() Unsupported class" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
@@ -149,9 +145,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String argObjName,
 		Object argObj,
@@ -168,9 +163,8 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 								+ ", not a supprted instance of " + argExpectedClasses ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnsupportedClassException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String argObjName,
 		Object argObj,

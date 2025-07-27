@@ -31,18 +31,16 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibInvalidArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibInvalidArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -50,9 +48,8 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibInvalidArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -61,9 +58,8 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibInvalidArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

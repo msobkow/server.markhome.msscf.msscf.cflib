@@ -29,9 +29,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		super( "Stale cache detected" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 					+ "() Stale cache detected" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
@@ -149,9 +145,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msgCause,
 		String targetTable,
@@ -170,9 +165,8 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 							: "" ) ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibStaleCacheDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msgCause,
 		String targetTable,

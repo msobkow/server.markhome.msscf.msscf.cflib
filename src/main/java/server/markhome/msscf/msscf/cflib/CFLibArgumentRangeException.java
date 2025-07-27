@@ -35,18 +35,16 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -54,9 +52,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -65,9 +62,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -77,9 +73,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -92,9 +87,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -109,9 +103,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -124,9 +117,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -141,9 +133,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -156,9 +147,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -173,9 +163,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -188,9 +177,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -205,9 +193,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -220,9 +207,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -237,9 +223,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -252,9 +237,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -269,9 +253,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -284,9 +267,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue, minValue, maxValue));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -301,9 +283,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 			th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -316,9 +297,8 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 				argValue.toString(), minValue.toString(), maxValue.toString()));
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibArgumentRangeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

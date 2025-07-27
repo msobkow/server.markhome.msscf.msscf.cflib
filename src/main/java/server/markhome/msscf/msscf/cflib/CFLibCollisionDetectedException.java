@@ -33,18 +33,16 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibCollisionDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibCollisionDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -52,9 +50,8 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibCollisionDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Object argKey )
 	{
@@ -66,9 +63,8 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		indexKey = argKey;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibCollisionDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Object argKey,
 		Throwable th )

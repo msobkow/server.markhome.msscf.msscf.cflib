@@ -36,9 +36,8 @@ public class CFLibRuntimeException extends RuntimeException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibRuntimeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -52,9 +51,8 @@ public class CFLibRuntimeException extends RuntimeException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibRuntimeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )

@@ -29,9 +29,8 @@ public class CFLibUsageException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUsageException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibUsageException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUsageException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibUsageException extends IllegalStateException {
 		super( "Illegal usage" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUsageException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibUsageException extends IllegalStateException {
 					+ "() Illegal usage" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUsageException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{

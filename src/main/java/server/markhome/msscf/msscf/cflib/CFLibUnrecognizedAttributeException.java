@@ -31,9 +31,8 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnrecognizedAttributeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -77,9 +76,8 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 		super( "Unrecognized attribute" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnrecognizedAttributeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -89,9 +87,8 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 					+ "() Unrecognized attribute" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibUnrecognizedAttributeException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String locInfo,
 		String attrName )

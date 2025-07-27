@@ -36,18 +36,16 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		super( msg );
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public CFLibDependentsDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibDependentsDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -55,9 +53,8 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibDependentsDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String relationType,
 		String relationName,
@@ -76,9 +73,8 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		pkey = argKey;
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibDependentsDetectedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String relationType,
 		String relationName,

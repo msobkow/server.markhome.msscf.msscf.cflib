@@ -29,9 +29,8 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibMustOverrideException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibMustOverrideException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibMustOverrideException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		super( "Method must be overridden by implementation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibMustOverrideException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibMustOverrideException extends IllegalStateException {
 					+ "() Method must be overridden by implementation" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibMustOverrideException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{

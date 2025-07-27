@@ -29,9 +29,8 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotImplementedYetException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotImplementedYetException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		super( "Not implemented yet" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotImplementedYetException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 					+ "() Not implemented yet" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotImplementedYetException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{

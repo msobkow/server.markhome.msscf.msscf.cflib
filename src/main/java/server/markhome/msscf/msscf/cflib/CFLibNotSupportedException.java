@@ -29,9 +29,8 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotSupportedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotSupportedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		super( "Method is not supported" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotSupportedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 					+ "() Method is not supported" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibNotSupportedException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{

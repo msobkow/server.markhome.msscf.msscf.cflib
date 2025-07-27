@@ -31,18 +31,16 @@ public class CFLibDbException extends CFLibRuntimeException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibDbException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibDbException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{

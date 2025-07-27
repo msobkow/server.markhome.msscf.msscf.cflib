@@ -31,18 +31,16 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
 		super( throwingClass, methName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -50,9 +48,8 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -61,9 +58,8 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,
@@ -73,9 +69,8 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		super( throwingClass, methName, argNo, argName, msg, th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName )
@@ -84,9 +79,8 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 			Inz.x("cflib.CFLibEmptyArgumentException.default") );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibEmptyArgumentException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName,

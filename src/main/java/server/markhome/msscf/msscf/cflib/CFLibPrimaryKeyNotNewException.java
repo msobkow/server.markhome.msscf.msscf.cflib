@@ -29,9 +29,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		super( msg );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg )
 	{
@@ -45,9 +44,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 						: "" ) );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		String msg,
 		Throwable th )
@@ -110,9 +108,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		super( "Primary key not new" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName )
 	{
 		super( throwingClass.getName()
@@ -122,9 +119,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 					+ "() Primary key not new" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Throwable th )
 	{
@@ -149,9 +145,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 				th );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Object argKey )
 	{
@@ -162,9 +157,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 					+ "() Primary key " + argKey.toString() + " is not new" );
 	}
 
-	@SuppressWarnings("rawtypes")
 	public CFLibPrimaryKeyNotNewException(
-		Class throwingClass,
+		Class<?> throwingClass,
 		String methName,
 		Object argKey,
 		Throwable th )
