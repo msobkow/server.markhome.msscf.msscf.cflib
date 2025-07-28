@@ -81,9 +81,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short argValue,
 		short maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue) );
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -95,10 +104,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -109,9 +127,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int argValue,
 		int maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -123,10 +150,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -137,9 +173,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long argValue,
 		long maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -151,10 +196,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -165,9 +219,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float argValue,
 		float maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -179,10 +242,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -193,9 +265,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double argValue,
 		double maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -207,10 +288,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -221,10 +311,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Calendar argValue,
 		Calendar maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			"value " + argValue.toString()
-				+ " must be no more than "
-				+ maxValue.toString() );
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -236,10 +334,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Calendar maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -250,9 +357,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String argValue,
 		String maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -264,10 +380,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -278,9 +403,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal argValue,
 		BigDecimal maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -292,10 +426,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -351,9 +494,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short argValue,
 		short maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -365,10 +517,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		short maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -379,9 +540,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int argValue,
 		int maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -393,10 +563,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		int maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -407,9 +586,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long argValue,
 		long maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -421,10 +609,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		long maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -435,9 +632,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float argValue,
 		float maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -449,10 +655,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		float maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -463,9 +678,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double argValue,
 		double maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -477,10 +701,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		double maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -491,9 +724,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Calendar argValue,
 		Calendar maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -505,10 +747,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		Calendar maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -519,9 +770,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String argValue,
 		String maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue, maxValue));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -533,10 +793,19 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		String maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue, maxValue),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
@@ -547,9 +816,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal argValue,
 		BigDecimal maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
@@ -561,9 +839,18 @@ public class CFLibArgumentOverflowException extends CFLibArgumentException {
 		BigDecimal maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string"),
-				argValue.toString(), maxValue.toString()),
+		super( String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString()),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				maxValue.toString());
 	}
 }
