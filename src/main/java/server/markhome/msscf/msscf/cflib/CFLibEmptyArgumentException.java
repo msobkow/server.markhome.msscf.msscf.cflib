@@ -75,8 +75,14 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		int argNo,
 		String argName )
 	{
-		super( throwingClass, methName, argNo, argName,
-			Inz.x("cflib.CFLibEmptyArgumentException.default") );
+		super(String.format(Inz.s("cflib.CFLibEmptyArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName));
+		this.localMessage = String.format(Inz.x("cflib.CFLibEmptyArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName);
 	}
 
 	public CFLibEmptyArgumentException(
@@ -86,8 +92,31 @@ public class CFLibEmptyArgumentException extends CFLibArgumentException {
 		String argName,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			Inz.x("cflib.CFLibEmptyArgumentException.default"),
-			th );
+		super(String.format(Inz.s("cflib.CFLibEmptyArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibEmptyArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName);
 	}
-}
+
+	public CFLibEmptyArgumentException(
+		String fieldName,
+		String methName,
+		int argNo,
+		String argName,
+		Throwable th )
+	{
+		super(String.format(Inz.s("cflib.CFLibEmptyArgumentException.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibEmptyArgumentException.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName);
+	}}

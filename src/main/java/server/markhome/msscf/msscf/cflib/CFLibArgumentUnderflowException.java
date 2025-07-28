@@ -79,11 +79,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		short argValue,
-		short maxValue )
+		short minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -92,13 +101,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		short argValue,
-		short maxValue,
+		short minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -107,11 +125,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		int argValue,
-		int maxValue )
+		int minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -120,13 +147,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		int argValue,
-		int maxValue,
+		int minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -135,11 +171,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		long argValue,
-		long maxValue )
+		long minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -148,13 +193,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		long argValue,
-		long maxValue,
+		long minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -163,11 +217,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		float argValue,
-		float maxValue )
+		float minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -176,13 +239,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		float argValue,
-		float maxValue,
+		float minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -191,11 +263,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		double argValue,
-		double maxValue )
+		double minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -204,13 +285,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		double argValue,
-		double maxValue,
+		double minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -219,11 +309,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		Calendar argValue,
-		Calendar maxValue )
+		Calendar minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -232,13 +331,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		Calendar argValue,
-		Calendar maxValue,
+		Calendar minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -247,11 +355,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		String argValue,
-		String maxValue )
+		String minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -260,13 +377,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		String argValue,
-		String maxValue,
+		String minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -275,11 +401,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		BigDecimal argValue,
-		BigDecimal maxValue )
+		BigDecimal minValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -288,13 +423,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		BigDecimal argValue,
-		BigDecimal maxValue,
+		BigDecimal minValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -348,11 +492,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		short argValue,
-		short maxValue )
+		short minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -361,13 +514,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		short argValue,
-		short maxValue,
+		short minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -376,11 +538,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		int argValue,
-		int maxValue )
+		int minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -389,13 +560,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		int argValue,
-		int maxValue,
+		int minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -404,11 +584,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		long argValue,
-		long maxValue )
+		long minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -417,13 +606,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		long argValue,
-		long maxValue,
+		long minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -432,11 +630,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		float argValue,
-		float maxValue )
+		float minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -445,13 +652,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		float argValue,
-		float maxValue,
+		float minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -460,11 +676,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		double argValue,
-		double maxValue )
+		double minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -473,13 +698,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		double argValue,
-		double maxValue,
+		double minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -488,11 +722,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		Calendar argValue,
-		Calendar maxValue )
+		Calendar minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -501,13 +744,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		Calendar argValue,
-		Calendar maxValue,
+		Calendar minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -516,11 +768,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		String argValue,
-		String maxValue )
+		String minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -529,13 +790,22 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		String argValue,
-		String maxValue,
+		String minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -544,11 +814,20 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		BigDecimal argValue,
-		BigDecimal maxValue )
+		BigDecimal minValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
@@ -557,12 +836,21 @@ public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 		int argNo,
 		String argName,
 		BigDecimal argValue,
-		BigDecimal maxValue,
+		BigDecimal minValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string"),
-				argValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString());
 	}
 }

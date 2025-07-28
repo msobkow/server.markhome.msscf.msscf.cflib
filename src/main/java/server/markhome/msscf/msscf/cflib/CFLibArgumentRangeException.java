@@ -82,9 +82,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short minValue,
 		short maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -97,10 +108,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -112,9 +134,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int minValue,
 		int maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -127,10 +160,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -142,9 +186,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long minValue,
 		long maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -157,10 +212,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -172,9 +238,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float minValue,
 		float maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -187,10 +264,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -202,9 +290,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double minValue,
 		double maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -217,10 +316,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -232,9 +342,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar minValue,
 		Calendar maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -247,10 +368,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -262,9 +394,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String minValue,
 		String maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -277,10 +420,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -292,9 +446,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal minValue,
 		BigDecimal maxValue )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -307,10 +472,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal maxValue,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -367,9 +543,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short minValue,
 		short maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -382,10 +569,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		short maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -397,9 +595,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int minValue,
 		int maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -412,10 +621,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		int maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -427,9 +647,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long minValue,
 		long maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -442,10 +673,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		long maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -457,9 +699,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float minValue,
 		float maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -472,10 +725,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		float maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -487,9 +751,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double minValue,
 		double maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -502,10 +777,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		double maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.float"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -517,9 +803,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar minValue,
 		Calendar maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -532,10 +829,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		Calendar maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -547,9 +855,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String minValue,
 		String maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue, minValue, maxValue));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -562,10 +881,21 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		String maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue, minValue, maxValue),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue,
+				minValue,
+				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
@@ -577,9 +907,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal minValue,
 		BigDecimal maxValue )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()));
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
@@ -592,9 +933,20 @@ public class CFLibArgumentRangeException extends CFLibArgumentException {
 		BigDecimal maxValue,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName,
-			String.format(Inz.x("cflib.CFLibArgumentRangeException.string"),
-				argValue.toString(), minValue.toString(), maxValue.toString()),
-			th );
+		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString());
 	}
 }

@@ -115,12 +115,37 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 	}
 
 	public CFLibInvalidArgumentException(
-		String fieldName,
+		Class<?> throwingClass,
 		String methName,
 		int argNo,
 		String argName )
 	{
-		super( fieldName, methName, argNo, argName, Inz.x("cflib.CFLibInvalidArgumentException.default") );
+		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName));
+		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName);
+	}
+
+	public CFLibInvalidArgumentException(
+		Class<?> throwingClass,
+		String methName,
+		int argNo,
+		String argName,
+		Throwable th )
+	{
+		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				argNo,
+				argName);
 	}
 
 	public CFLibInvalidArgumentException(
@@ -130,6 +155,14 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		String argName,
 		Throwable th )
 	{
-		super( fieldName, methName, argNo, argName, Inz.x("cflib.CFLibInvalidArgumentException.default"), th );
+		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.FldArgMsg"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				argNo,
+				argName);
 	}
 }
