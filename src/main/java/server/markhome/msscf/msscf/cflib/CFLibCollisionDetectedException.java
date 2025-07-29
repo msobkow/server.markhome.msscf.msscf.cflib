@@ -55,8 +55,13 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		String methName,
 		Object argKey )
 	{
-		super( throwingClass, methName,
-			(argKey != null)
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null)
+				? String.format(Inz.s("cflib.CFLibCollisionDetectedException.pkey"),
+					argKey.toString())
+				: Inz.s("cflib.CFLibCollisionDetectedException.default")));
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null)
 				? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
 					argKey.toString())
 				: Inz.x("cflib.CFLibCollisionDetectedException.default"));
@@ -69,12 +74,15 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 		Object argKey,
 		Throwable th )
 	{
-		super( throwingClass, methName,
-			(argKey != null)
-				? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
-					argKey.toString())
-				: Inz.x("cflib.CFLibCollisionDetectedException.default"),
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null)
+				? String.format(Inz.s("cflib.CFLibCollisionDetectedException.pkey"), argKey.toString())
+				: Inz.s("cflib.CFLibCollisionDetectedException.default")),
 			th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null)
+				? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"), argKey.toString())
+				: Inz.x("cflib.CFLibCollisionDetectedException.default"));
 		indexKey = argKey;
 	}
 

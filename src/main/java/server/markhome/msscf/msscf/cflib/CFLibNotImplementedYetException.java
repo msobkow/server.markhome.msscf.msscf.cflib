@@ -21,12 +21,17 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibNotImplementedYetException extends IllegalStateException {
+
+	protected String localizedMessage = null;
 
 	public CFLibNotImplementedYetException(
 		String msg )
 	{
 		super( msg );
+		localizedMessage = msg;
 	}
 
 	public CFLibNotImplementedYetException(
@@ -34,14 +39,10 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
+		localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
 	public CFLibNotImplementedYetException(
@@ -50,25 +51,19 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
 				th );
+		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
 	public CFLibNotImplementedYetException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localizedMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibNotImplementedYetException(
@@ -76,14 +71,10 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localizedMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibNotImplementedYetException(
@@ -92,31 +83,25 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
 	}
 
 	public CFLibNotImplementedYetException()
 	{
-		super( "Not implemented yet" );
+		super(String.format(Inz.s("cflib.CFLibNotImplementedYetException.default"), "") );
+		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotImplementedYetException.default"), "");
 	}
 
 	public CFLibNotImplementedYetException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Not implemented yet" );
+		super(String.format(Inz.s("cflib.CFLibNotImplementedYetException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )));
+		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotImplementedYetException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNotImplementedYetException(
@@ -124,12 +109,11 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Not implemented yet",
+		super( String.format(Inz.s("cflib.CFLibNotImplementedYetException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )),
 				th );
+		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotImplementedYetException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNotImplementedYetException(
@@ -137,11 +121,20 @@ public class CFLibNotImplementedYetException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Not implemented yet",
+		super( String.format(Inz.s("cflib.CFLibNotImplementedYetException.default"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() "	: " " )),
 				th );
+		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotImplementedYetException.default"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() "	: " " ));
+	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localizedMessage != null) {
+			return localizedMessage;
+		}
+		else {
+			return getMessage();
+		}
 	}
 }

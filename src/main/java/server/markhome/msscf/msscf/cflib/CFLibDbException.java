@@ -44,6 +44,9 @@ public class CFLibDbException extends CFLibRuntimeException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass, methName, String.format(Inz.x("cflib.CFLibDbException.sqlexcept"), th.getMessage()), th );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+				+ String.format(Inz.s("cflib.CFLibDbException.sqlexcept"), th.getMessage()), th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+				+ String.format(Inz.x("cflib.CFLibDbException.sqlexcept"), th.getMessage());
 	}
 }

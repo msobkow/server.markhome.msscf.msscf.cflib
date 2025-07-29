@@ -46,10 +46,10 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		String msg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ));
 	}
 
@@ -60,11 +60,11 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ));
 	}
 
@@ -76,12 +76,12 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		String msg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg	: "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg	: "" ) );
@@ -96,13 +96,13 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg	: "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg	: "" ) );
@@ -126,10 +126,10 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		String msg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
 	}
 
@@ -140,11 +140,11 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
 	}
 
@@ -156,12 +156,12 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		String msg )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
@@ -176,13 +176,13 @@ public class CFLibArgumentException extends IllegalArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName,
 				( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );

@@ -30,10 +30,21 @@ package server.markhome.msscf.msscf.cflib;
  */
 public class CFLibRuntimeException extends RuntimeException {
 
+	protected String localMessage = null;
+
 	public CFLibRuntimeException(
 		String msg )
 	{
 		super( msg );
+		localMessage = msg;
+	}
+
+	public CFLibRuntimeException(
+		String msg,
+		Throwable th )
+	{
+		super( msg, th );
+		localMessage = msg;
 	}
 
 	public CFLibRuntimeException(
@@ -41,14 +52,10 @@ public class CFLibRuntimeException extends RuntimeException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
+		localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
 	public CFLibRuntimeException(
@@ -57,25 +64,19 @@ public class CFLibRuntimeException extends RuntimeException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
-				th );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
+					th );
+		localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
 	public CFLibRuntimeException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibRuntimeException(
@@ -83,14 +84,10 @@ public class CFLibRuntimeException extends RuntimeException {
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
 	public CFLibRuntimeException(
@@ -99,14 +96,20 @@ public class CFLibRuntimeException extends RuntimeException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
-				th );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
+					th );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
+	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localMessage != null) {
+			return localMessage;
+		}
+		else {
+			return this.getMessage();
+		}
 	}
 }

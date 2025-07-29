@@ -61,8 +61,14 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		String targetName,
 		Object argKey )
 	{
-		super( throwingClass, methName,
-			(argKey != null) ?
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null) ?
+				String.format(Inz.s("cflib.CFLibDependentsDetectedException.pkey"),
+					relationType, relationName, targetName, argKey.toString())
+				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+					relationType, relationName, targetName)));
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null) ?
 				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
 					relationType, relationName, targetName, argKey.toString())
 				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
@@ -82,13 +88,19 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 		Object argKey,
 		Throwable th )
 	{
-		super( throwingClass, methName,
-			(argKey != null) ?
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null) ?
+				String.format(Inz.s("cflib.CFLibDependentsDetectedException.pkey"),
+					relationType, relationName, targetName, argKey.toString())
+				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+					relationType, relationName, targetName)),
+			th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+			+ ((argKey != null) ?
 				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
 					relationType, relationName, targetName, argKey.toString())
 				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
-					relationType, relationName, targetName),
-			th );
+					relationType, relationName, targetName));
 		relnType = relationType;
 		relnName = relationName;
 		relnTarget = targetName;

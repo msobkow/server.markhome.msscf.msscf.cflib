@@ -121,11 +121,11 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		String argName )
 	{
 		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName));
 		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName);
 	}
@@ -138,12 +138,12 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
 				argNo,
 				argName);
 	}
@@ -156,12 +156,12 @@ public class CFLibInvalidArgumentException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibInvalidArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibInvalidArgumentException.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName	: "" ),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
 				argNo,
 				argName);
 	}
