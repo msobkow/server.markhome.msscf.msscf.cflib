@@ -21,12 +21,17 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
+
+	protected String localMessage = null;
 
 	public CFLibPrimaryKeyNotNewException(
 		String msg )
 	{
 		super( msg );
+		this.localMessage = msg;
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -34,14 +39,10 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -50,25 +51,19 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super(throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibPrimaryKeyNotNewException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -76,14 +71,10 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -92,31 +83,27 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibPrimaryKeyNotNewException()
 	{
-		super( "Primary key not new" );
+		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.default"), "") );
+		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.default"), "");
 	}
 
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Primary key not new" );
+		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.default"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.default"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -124,12 +111,11 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Primary key not new",
+		super(String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.default"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
 				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.default"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -137,11 +123,8 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Primary key not new",
+		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.default"),
+					fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() "	: " " )),
 				th );
 	}
 
@@ -150,11 +133,12 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String methName,
 		Object argKey )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Primary key " + argKey.toString() + " is not new" );
+		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.pkey"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+				argKey.toString()));
+		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.pkey"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+				argKey.toString());
 	}
 
 	public CFLibPrimaryKeyNotNewException(
@@ -163,11 +147,12 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		Object argKey,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Primary key " + argKey.toString() + " is not new",
+		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.pkey"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+				argKey.toString()),
 			th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.pkey"),
+				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+				argKey.toString());
 	}
 }
