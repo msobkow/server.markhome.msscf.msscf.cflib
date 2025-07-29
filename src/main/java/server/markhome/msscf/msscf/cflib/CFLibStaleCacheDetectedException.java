@@ -21,12 +21,17 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibStaleCacheDetectedException extends IllegalStateException {
+
+	protected String localMessage = null;
 
 	public CFLibStaleCacheDetectedException(
 		String msg )
 	{
 		super( msg );
+		this.localMessage = msg;
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -34,14 +39,10 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -50,25 +51,19 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibStaleCacheDetectedException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -76,14 +71,10 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName  + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName  + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -92,31 +83,26 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName  + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName  + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibStaleCacheDetectedException()
 	{
-		super( "Stale cache detected" );
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"), ""));
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Stale cache detected" );
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " ));
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -124,12 +110,11 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Stale cache detected",
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )),
 				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " ));
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -137,12 +122,12 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Stale cache detected",
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
 				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
+				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -152,17 +137,40 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		String targetTable,
 		Object argKey )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: ""
-				+ "Stale cache detected due to " + msgCause
-					+ ( ( ( targetTable != null ) && ( targetTable.length() > 0 ) )
-							? " by " + targetTable
-							: "" )
-					+ ( ( argKey != null )
-							? " key " + argKey.toString()
-							: "" ) ) );
+		super( ((targetTable != null && targetTable.length() > 0) ?
+					((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable,
+							argKey.toString())
+						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable))
+					: ((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							argKey.toString())
+						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause))));
+		this.localMessage = ((targetTable != null && targetTable.length() > 0) ?
+					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable,
+							argKey.toString())
+						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable))
+					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							argKey.toString())
+						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause)));
 	}
 
 	public CFLibStaleCacheDetectedException(
@@ -173,17 +181,50 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 		Object argKey,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: ""
-				+ "Stale cache detected due to " + msgCause
-					+ ( ( ( targetTable != null ) && ( targetTable.length() > 0 ) )
-							? " by " + targetTable
-							: "" )
-					+ ( ( argKey != null )
-							? " key " + argKey.toString()
-							: "" ) ),
+		super( ((targetTable != null && targetTable.length() > 0) ?
+					((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable,
+							argKey.toString())
+						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable))
+					: ((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							argKey.toString())
+						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause))),
 				th );
+		this.localMessage = ((targetTable != null && targetTable.length() > 0) ?
+					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable,
+							argKey.toString())
+						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							targetTable))
+					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause,
+							argKey.toString())
+						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " "),
+							msgCause)));
+	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localMessage != null) {
+			return localMessage;
+		}
+		else {
+			return getMessage();
+		}
 	}
 }
