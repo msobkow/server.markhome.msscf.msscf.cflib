@@ -126,4 +126,14 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		this.localizedMessage = String.format(Inz.x("cflib.CFLibMustOverrideException.default"),
 			fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
 	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localizedMessage != null) {
+			return localizedMessage;
+		}
+		else {
+			return getMessage();
+		}
+	}
 }

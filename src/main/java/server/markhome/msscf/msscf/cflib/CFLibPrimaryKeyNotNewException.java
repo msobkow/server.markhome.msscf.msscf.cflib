@@ -155,4 +155,13 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
 				argKey.toString());
 	}
-}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localMessage != null) {
+			return localMessage;
+		}
+		else {
+			return getMessage();
+		}
+	}}
