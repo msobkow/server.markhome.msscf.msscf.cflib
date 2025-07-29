@@ -21,12 +21,17 @@
 
 package server.markhome.msscf.msscf.cflib;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibUnresolvedRelationException extends IllegalStateException {
+
+	protected String localMessage = null;
 
 	public CFLibUnresolvedRelationException(
 		String msg )
 	{
 		super( msg );
+		this.localMessage = msg;
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -34,14 +39,10 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -50,25 +51,19 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnresolvedRelationException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -76,14 +71,10 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -92,31 +83,27 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ),
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnresolvedRelationException()
 	{
-		super( "Unresolved relation" );
+		super(String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"), ""));
+		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"), "");
 	}
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Unresolved relation" );
+		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : "" )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"),
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : "" ));
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -124,12 +111,11 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Unresolved relation",
+		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : "" )),
 				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"),
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : "" ));
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -137,11 +123,8 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String methName,
 		Throwable th )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Unresolved relation",
+		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
+					fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : "" )),
 				th );
 	}
 
@@ -153,15 +136,28 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String targetName,
 		Object argKey )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ relationType + " relation " + relationName
-						+ (( argKey != null ) ? " key " + argKey.toString() : "" )
-						+ " referencing " + targetName
-						+ " could not be resolved" );
+		super( (argKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					argKey.toString(),
+					targetName)
+				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					targetName ));
+		this.localMessage = (argKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					argKey.toString(),
+					targetName)
+				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					targetName );
 	}
 
 	public CFLibUnresolvedRelationException(
@@ -173,15 +169,38 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Object argKey,
 		Throwable th )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ relationType + " relation " + relationName
-						+ (( argKey != null ) ? " key " + argKey.toString() : "" )
-						+ " referencing " + targetName
-						+ " could not be resolved",
+		super( (argKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					argKey.toString(),
+					targetName)
+				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					targetName ),
 				th );
+		this.localMessage = (argKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					argKey.toString(),
+					targetName)
+				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
+					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					relationType,
+					relationName,
+					targetName );
+	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localMessage != null) {
+			return localMessage;
+		}
+		else {
+			return getMessage();
+		}
 	}
 }

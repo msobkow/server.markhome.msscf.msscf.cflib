@@ -37,6 +37,6 @@ public class InzTest {
 
     @Test
     public void testX() {
-        assertEquals("%1$s %2$s", Inz.x("cflib.CFLibArgumentException.TcmnMsg"));
+        assertEquals("%1$s%2$s", Inz.x("cflib.CFLibArgumentException.TcmnMsg"));
     }
 }

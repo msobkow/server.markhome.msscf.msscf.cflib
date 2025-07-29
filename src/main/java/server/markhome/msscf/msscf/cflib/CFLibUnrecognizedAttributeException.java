@@ -23,12 +23,17 @@ package server.markhome.msscf.msscf.cflib;
 
 import java.util.*;
 
+import server.markhome.msscf.msscf.cflib.inz.Inz;
+
 public class CFLibUnrecognizedAttributeException extends NoSuchElementException {
+
+	protected String localMessage = null;
 
 	public CFLibUnrecognizedAttributeException(
 		String msg )
 	{
 		super( msg );
+		this.localMessage = msg;
 	}
 
 	public CFLibUnrecognizedAttributeException(
@@ -36,24 +41,40 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+	}
+
+	public CFLibUnrecognizedAttributeException(
+		Class<?> throwingClass,
+		String methName,
+		String msg,
+		Throwable th )
+	{
+		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
+				th );
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnrecognizedAttributeException(
 		String fieldName,
 		String msg )
 	{
-		super( fieldName + "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + " "+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + " "+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+	}
+	
+	public CFLibUnrecognizedAttributeException(
+		String fieldName,
+		String msg,
+		Throwable th )
+	{
+		super( fieldName + " "+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ), th );
+		this.localMessage = fieldName + " "+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnrecognizedAttributeException(
@@ -61,30 +82,28 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 		String methName,
 		String msg )
 	{
-		super( fieldName
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )
-						? msg
-						: "" ) );
+		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
+		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
 	public CFLibUnrecognizedAttributeException()
 	{
-		super( "Unrecognized attribute" );
+		super(String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.default"),
+				""));
+		this.localMessage = String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.default"),
+				"");
 	}
 
 	public CFLibUnrecognizedAttributeException(
 		Class<?> throwingClass,
 		String methName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() Unrecognized attribute" );
+		super(String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibUnrecognizedAttributeException.default"),
+				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibUnrecognizedAttributeException(
@@ -93,17 +112,41 @@ public class CFLibUnrecognizedAttributeException extends NoSuchElementException 
 		String locInfo,
 		String attrName )
 	{
-		super( throwingClass.getName()
-					+ ( ( ( methName != null ) && ( methName.length() > 0 ))
-						? "." + methName
-						: "" )
-					+ "() "
-					+ ((( locInfo != null ) && ( locInfo.length() > 0 ))
-						? locInfo + " "
-						: "" )
-					+ "Unrecognized attribute "
-					+ ( (( attrName != null ) && ( attrName.length() > 0 ))
-							? "\"" + attrName + "\""
-							: "null" ) );
+		super( (locInfo != null && locInfo.length() > 0) ?
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.locattr"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							locInfo,
+							attrName)
+					: String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.loc"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							locInfo))
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.attr"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							attrName)
+					: String.format(Inz.s("cflib.CFLibUnrecognizedAttributeException.default"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ))));
+		this.localMessage = (locInfo != null && locInfo.length() > 0) ?
+					((attrName != null && attrName.length() > 0) ? String.format(Inz.x("cflib.CFLibUnrecognizedAttributeException.locattr"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							locInfo,
+							attrName)
+					: String.format(Inz.x("cflib.CFLibUnrecognizedAttributeException.loc"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							locInfo))
+				: ((attrName != null && attrName.length() > 0) ? String.format(Inz.x("cflib.CFLibUnrecognizedAttributeException.attr"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " ),
+							attrName)
+					: String.format(Inz.x("cflib.CFLibUnrecognizedAttributeException.default"),
+							throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )));
+	}
+
+	@Override
+	public String getLocalizedMessage() {
+		if (localMessage != null) {
+			return localMessage;
 		}
+		else {
+			return getMessage();
+		}
+	}
 }
