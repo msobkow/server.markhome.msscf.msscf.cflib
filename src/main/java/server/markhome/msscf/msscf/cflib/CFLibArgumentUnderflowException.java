@@ -30,827 +30,960 @@ import java.math.*;
 public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 
 	public CFLibArgumentUnderflowException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
+		super( enMsg, xMsg );
 	}
 
 	public CFLibArgumentUnderflowException(
-		Class<?> throwingClass,
-		String methName,
-		String msg )
-	{
-		super( throwingClass, methName, msg );
-	}
-
-	public CFLibArgumentUnderflowException(
-		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, msg, th );
+		super( enMsg, xMsg, th );
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass, methName, argNo, argName, msg );
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName, msg, th );
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
 	}
+
+	// public CFLibArgumentUnderflowException(
+	// 	Class<?> throwingClass,
+	// 	String enMethName,
+	// 	String xMethName,
+	// 	int argNo,
+	// 	String enArgName,
+	// 	String xArgName,
+	// 	String enMsg,
+	// 	String xMsg )
+	// {
+	// 	super( throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg );
+	// }
+
+	// public CFLibArgumentUnderflowException(
+	// 	Class<?> throwingClass,
+	// 	String enMethName,
+	// 	String xMethName,
+	// 	int argNo,
+	// 	String enArgName,
+	// 	String xArgName,
+	// 	String enMsg,
+	// 	String xMsg,
+	// 	Throwable th )
+	// {
+	// 	super( throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th );
+	// }
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue.toString(),
 				minValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue.toString(),
-				minValue.toString());
+				minValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				argNo,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue.toString(),
 				minValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.TcmnArgMsg"),
+				throwingClass.getName()	+ ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
 				argNo,
-				argName,
+				(xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName,
 				argValue.toString(),
-				minValue.toString());
+				minValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String msg )
+		String enFieldName,
+
+
+		String xFieldName
+,
+		String enMsg,
+		String xMsg )
 	{
-		super( fieldName, msg );
+		super( enFieldName, xFieldName, enMsg, xMsg );
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
-		String msg )
+		String enFieldName,
+
+
+		String xFieldName
+,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( fieldName, methName, msg );
+		super( enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg );
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
-		String msg,
+		String enFieldName,
+
+
+		String xFieldName
+,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( fieldName, methName, msg, th );
+		super( enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg, th );
 	}
 
-	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
-		String msg )
-	{
-		super( fieldName, methName, argNo, argName, msg );
-	}
+// 	public CFLibArgumentUnderflowException(
+// 		String enFieldName,
+// 		String xFieldName,
+// 		String enMethName,
+// 		String xMethName,
+// 		int argNo,
+// 		String enArgName,
+// 		String xArgName,
+// 		String enMsg,
+// 		String xMsg )
+// 	{
+// 		super( enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg );
+// 	}
+
+// 	public CFLibArgumentUnderflowException(
+// 		String enFieldName,
+// 		String xFieldName,
+// 		String enMethName,
+// 		String xMethName,
+// 		int argNo,
+// 		String enArgName,
+// 		String xArgName,
+// 		String enMsg,
+// 		String xMsg,
+// 		Throwable th )
+// 	{
+// 		super( enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th );
+// 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
-		Throwable th )
-	{
-		super( fieldName, methName, argNo, argName, msg, th );
-	}
+		String enFieldName,
 
-	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+
+		String xFieldName
+,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+
+
+		String xFieldName
+,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+
+
+		String xFieldName
+,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				minValue.toString());
+				minValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				minValue);
+				minValue),
+			th);
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString());
 	}
 
 	public CFLibArgumentUnderflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentUnderflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentUnderflowException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				minValue.toString());
+				minValue.toString()),
+			th);
 	}
 }

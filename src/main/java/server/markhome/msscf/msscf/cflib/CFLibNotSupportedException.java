@@ -24,6 +24,7 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibNotSupportedException extends UnsupportedOperationException {
+	TBD: replicate CFLibMustOverrideException with slightly different messaging resources under the hood.
 
 	String localizedMessage = null;
 
@@ -39,9 +40,9 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
 				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
 				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -51,10 +52,10 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
 				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
 				th );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() ": " " )
+		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
 				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -71,9 +72,9 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		String methName,
 		String msg )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -83,10 +84,10 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -101,9 +102,9 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		String methName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )));
 		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNotSupportedException(
@@ -112,10 +113,10 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
 		this.localizedMessage = String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNotSupportedException(
@@ -124,10 +125,10 @@ public class CFLibNotSupportedException extends UnsupportedOperationException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
 		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	@Override

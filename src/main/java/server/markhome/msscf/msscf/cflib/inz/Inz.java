@@ -21,7 +21,6 @@
 
 package server.markhome.msscf.msscf.cflib.inz;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -95,9 +94,9 @@ public class Inz {
             InzEntry entry = new InzEntry(pathEntry);
             entry.loadLangs();
             entries.add(entry);
-        } else {
-            throw new IllegalArgumentException("Path entry already exists: " + pathEntry.getPath());
-        }
+        } // else {
+        //     throw new IllegalArgumentException("Path entry already exists: " + pathEntry.getPath());
+        // }
     }
 
     /**
@@ -253,7 +252,7 @@ public class Inz {
         }
         for (int i = entries.size() - 1; i >= 0; i--) {
             InzEntry entry = entries.get(i);
-            if (entry.getPathEntry().getClass() != null) {
+            if (entry.getPathEntry().getClazz() != null && entry.getPathEntry().getPath().startsWith("resource:")) {
                 String translation = entry.x(key, "en");
                 if (translation != null) {
                     return translation; // Return the first non-null translation found

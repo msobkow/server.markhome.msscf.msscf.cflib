@@ -24,6 +24,7 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibUnsupportedClassException extends IllegalStateException {
+	TBD: Clone CFLibMustOverrideException when migrated as base template for this exception class
 
 	protected String localMessage = null;
 
@@ -39,9 +40,9 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -51,10 +52,10 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -71,9 +72,9 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -83,10 +84,10 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
 				th );
-		this.localMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )
+		this.localMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
 	}
 
@@ -101,9 +102,9 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String methName )
 	{
 		super(String.format(Inz.s("cflib.CFLibUnsupportedClassException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnsupportedClassException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibUnsupportedClassException(
@@ -112,10 +113,10 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibUnsupportedClassException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnsupportedClassException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibUnsupportedClassException(
@@ -124,10 +125,10 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibUnsupportedClassException.default"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnsupportedClassException.default"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibUnsupportedClassException(
@@ -138,21 +139,21 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		String argExpectedClasses )
 	{
 		super( (argObj != null) ? String.format(Inz.s("cflib.CFLibUnsupportedClassException.objwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argObj.getClass().getName(),
 					argExpectedClasses )
 				: String.format(Inz.s("cflib.CFLibUnsupportedClassException.nullwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argExpectedClasses ) );
 		this.localMessage = (argObj != null) ? String.format(Inz.x("cflib.CFLibUnsupportedClassException.objwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argObj.getClass().getName(),
 					argExpectedClasses )
 				: String.format(Inz.x("cflib.CFLibUnsupportedClassException.nullwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argExpectedClasses );
 	}
@@ -166,22 +167,22 @@ public class CFLibUnsupportedClassException extends IllegalStateException {
 		Throwable th )
 	{
 		super( (argObj != null) ? String.format(Inz.s("cflib.CFLibUnsupportedClassException.objwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argObj.getClass().getName(),
 					argExpectedClasses )
 				: String.format(Inz.s("cflib.CFLibUnsupportedClassException.nullwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argExpectedClasses ),
 			th );
 		this.localMessage = (argObj != null) ? String.format(Inz.x("cflib.CFLibUnsupportedClassException.objwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argObj.getClass().getName(),
 					argExpectedClasses )
 				: String.format(Inz.x("cflib.CFLibUnsupportedClassException.nullwithclasses"),
-					throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
 					argObjName,
 					argExpectedClasses );
 	}

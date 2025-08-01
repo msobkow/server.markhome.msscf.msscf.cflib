@@ -25,28 +25,130 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibDbException extends CFLibRuntimeException {
 
+	protected Object indexKey = null;
+
 	public CFLibDbException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
+		super( enMsg, xMsg );
+	}
+
+	public CFLibDbException(
+		String enMsg,
+		String xMsg,
+		Object indexKey )
+	{
+		super( enMsg, xMsg );
+		this.indexKey = indexKey;
 	}
 
 	public CFLibDbException(
 		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass, methName, msg );
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
 	}
 
 	public CFLibDbException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Object indexKey )
+	{
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDbException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-				+ String.format(Inz.s("cflib.CFLibDbException.sqlexcept"), th.getMessage()), th );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-				+ String.format(Inz.x("cflib.CFLibDbException.sqlexcept"), th.getMessage());
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
+	}
+
+	public CFLibDbException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Object indexKey,
+		Throwable th )
+	{
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDbException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Throwable th )
+	{
+		super(	String.format(Inz.s("cflib.CFLibDbException.sqlexcept"),
+					(throwingClass.getName() + (( enMethName != null && !enMethName.isEmpty())? ("." + enMethName + "()") : "")),
+					th.getMessage()),
+				String.format(Inz.x("cflib.CFLibDbException.sqlexcept"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					th.getMessage()),
+				th);
+	}
+
+	public CFLibDbException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Object indexKey )
+	{
+		super( ((indexKey != null)
+					? String.format(Inz.s("cflib.CFLibDbException.pkey"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDbException.default"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+				((indexKey != null)
+					? String.format(Inz.x("cflib.CFLibDbException.pkey"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDbException.default"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))));
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDbException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Object indexKey,
+		Throwable th)
+	{
+		super( ((indexKey != null)
+					? String.format(Inz.s("cflib.CFLibDbException.pkey"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDbException.default"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+				((indexKey != null)
+					? String.format(Inz.x("cflib.CFLibDbException.pkey"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDbException.default"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))),
+				th);
+		this.indexKey = indexKey;
+	}
+
+	public Object getIndexKey() {
+		return( indexKey );
 	}
 }

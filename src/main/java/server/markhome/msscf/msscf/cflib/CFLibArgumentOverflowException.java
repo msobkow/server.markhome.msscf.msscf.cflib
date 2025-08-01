@@ -30,827 +30,941 @@ import java.math.*;
 public class CFLibArgumentOverflowException extends CFLibArgumentException {
 
 	public CFLibArgumentOverflowException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
+		super(enMsg, xMsg);
+	}
+
+	public CFLibArgumentOverflowException(
+		String enMsg, String xMsg, Throwable cause) {
+			super(enMsg, xMsg, cause);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass, methName, msg );
+		super(throwingClass, enMethName, xMethName, enMsg, xMsg);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, msg, th );
+		super(throwingClass, enMethName, xMethName, enMsg, xMsg, th);
 	}
 
+	// public CFLibArgumentOverflowException(
+	//  	Class<?> throwingClass,
+	//  	String enMethName,
+	// 		String xMethName,
+	//  	int argNo,
+	//  	String enArgName,
+	// 		String xArgName,
+	//  	String enMsg,
+	//  	String xMsg )
+	// {
+	//  	super(throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
+	// }
+
+	// public CFLibArgumentOverflowException(
+	// 	Class<?> throwingClass,
+	// 	String enMethName,
+	// 	String xMethName,
+	// 	int argNo,
+	// 	String enArgName,
+	// 	String xArgName,
+	// 	String enMsg,
+	// 	String xMsg,
+	// 	Throwable th )
+	// {
+	// 	super(throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	// }
+
 	public CFLibArgumentOverflowException(
-		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg )
+		String enFieldName,
+		String xFieldName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass, methName, argNo, argName, msg );
+		super(enFieldName, xFieldName, enMsg, xMsg);
 	}
 
 	public CFLibArgumentOverflowException(
-		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
+	{
+		super(enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg);
+	}
+
+	public CFLibArgumentOverflowException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName, msg, th );
+		super(enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg, th);
 	}
 
+	// public CFLibArgumentOverflowException(
+	// 	String enFieldName,
+	//  	String xFieldName,
+	//  	String enMethName,
+	// 		String xMethName,
+	//  	int argNo,
+	//  	String enArgName,
+	// 		String xArgName,
+	//  	String enMsg,
+	//  	String xMsg )
+	// {
+	//  	super(enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
+	// }
+
+	// public CFLibArgumentOverflowException(
+	// 	String enFieldName,
+	// 	String xFieldName,
+	// 	String enMethName,
+	// 	String xMethName,
+	// 	int argNo,
+	// 	String enArgName,
+	// 	String xArgName,
+	// 	String enMsg,
+	// 	String xMsg,
+	// 	Throwable th )
+	// {
+	// 	super(enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	// }
+
+
+	
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-					th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th );
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String msg )
-	{
-		super( fieldName, msg );
-	}
-
-	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
-		String msg )
-	{
-		super( fieldName, methName, msg );
-	}
-
-	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
-		String msg,
-		Throwable th )
-	{
-		super( fieldName, methName, msg, th );
-	}
-
-	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
-		String msg )
-	{
-		super( fieldName, methName, argNo, argName, msg );
-	}
-
-	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
-		Throwable th )
-	{
-		super( fieldName, methName, argNo, argName, msg, th );
-	}
-
-	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float maxValue )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float maxValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double maxValue )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double maxValue,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				maxValue);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentOverflowException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentOverflowException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 }

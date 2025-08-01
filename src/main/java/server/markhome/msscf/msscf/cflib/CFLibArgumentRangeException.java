@@ -30,923 +30,1040 @@ import java.math.*;
 public class CFLibArgumentRangeException extends CFLibArgumentException {
 
 	public CFLibArgumentRangeException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
+		super(enMsg, xMsg);
+	}
+
+	public CFLibArgumentRangeException(
+		String enMsg,
+		String xMsg,
+		Throwable th)
+	{
+			super(enMsg, xMsg, th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass, methName, msg );
+		super(throwingClass, enMethName, xMethName, enMsg, xMsg);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, msg, th );
+		super(throwingClass, enMethName, xMethName, enMsg, xMsg, th);
 	}
 
 	public CFLibArgumentRangeException(
-		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg )
+	 	Class<?> throwingClass,
+	 	String enMethName,
+		String xMethName,
+	 	int argNo,
+	 	String enArgName,
+		String xArgName,
+	 	String enMsg,
+	 	String xMsg )
 	{
-		super( throwingClass, methName, argNo, argName, msg );
+	 	super(throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
 	}
 
 	public CFLibArgumentRangeException(
-		Class<?> throwingClass,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
+	 	Class<?> throwingClass,
+	 	String enMethName,
+		String xMethName,
+	 	int argNo,
+	 	String enArgName,
+		String xArgName,
+	 	String enMsg,
+	 	String xMsg,
+	 	Throwable th )
+	{
+	 	super(throwingClass, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	}
+
+	public CFLibArgumentRangeException(
+		String enFieldName,
+		String xFieldName,
+		String enMsg,
+		String xMsg )
+	{
+		super(enFieldName, xFieldName, enMsg, xMsg);
+	}
+
+	public CFLibArgumentRangeException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
+	{
+		super(enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg);
+	}
+
+	public CFLibArgumentRangeException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, argNo, argName, msg, th );
+		super(enFieldName, xFieldName, enMethName, xMethName, enMsg, xMsg, th);
 	}
 
 	public CFLibArgumentRangeException(
+	 	String enFieldName,
+		String xFieldName,
+	 	String enMethName,
+		String xMethName,
+	 	int argNo,
+	 	String enArgName,
+		String xArgName,
+	 	String enMsg,
+		String xMsg )
+	{
+	 	super(enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
+	}
+
+	public CFLibArgumentRangeException(
+	 	String enFieldName,
+		String xFieldName,
+	 	String enMethName,
+		String xMethName,
+	 	int argNo,
+	 	String enArgName,
+		String xArgName,
+	 	String enMsg,
+	 	String xMsg,
+	 	Throwable th )
+	{
+	 	super(enFieldName, xFieldName, enMethName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	}
+
+
+
+	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		short maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		short maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		int maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		int maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		long maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		long maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		float maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		float maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		double maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		double maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Calendar maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Calendar maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		String maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		String maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		BigDecimal maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		BigDecimal maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()" : "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.TcmnArgMsg"),
+				throwingClass.getName() + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String msg )
-	{
-		super( fieldName, msg );
-	}
-
-	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
-		String msg )
-	{
-		super( fieldName, methName, msg );
-	}
-
-	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
-		String msg,
-		Throwable th )
-	{
-		super( fieldName, methName, msg, th );
-	}
-
-	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
-		String msg )
-	{
-		super( fieldName, methName, argNo, argName, msg );
-	}
-
-	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
-		String msg,
-		Throwable th )
-	{
-		super( fieldName, methName, argNo, argName, msg, th );
-	}
-
-	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
-		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		short maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		short argValue,
 		short minValue,
 		short maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		int maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		int argValue,
 		int minValue,
 		int maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		long maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		long argValue,
 		long minValue,
 		long maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.decimal.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		float maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		float argValue,
 		float minValue,
 		float maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		double maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		double argValue,
 		double minValue,
 		double maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.float.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Calendar maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		Calendar argValue,
 		Calendar minValue,
 		Calendar maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		String maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue,
+				minValue,
+				maxValue),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
 				maxValue));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue,
-				minValue,
-				maxValue);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		String argValue,
 		String minValue,
 		String maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue,
 				minValue,
 				maxValue),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue,
 				minValue,
-				maxValue);
+				maxValue),
+			th);
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		BigDecimal maxValue )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
+				argValue.toString(),
+				minValue.toString(),
+				maxValue.toString()),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
-				argNo,
-				argName,
-				argValue.toString(),
-				minValue.toString(),
-				maxValue.toString());
 	}
 
 	public CFLibArgumentRangeException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		int argNo,
-		String argName,
+		String enArgName,
+		String xArgName,
 		BigDecimal argValue,
 		BigDecimal minValue,
 		BigDecimal maxValue,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
 				argNo,
-				argName,
+				enArgName,
 				argValue.toString(),
 				minValue.toString(),
 				maxValue.toString()),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "()"	: "" ),
+			String.format(Inz.x("cflib.CFLibArgumentRangeException.string.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
 				argNo,
-				argName,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				argValue.toString(),
 				minValue.toString(),
-				maxValue.toString());
+				maxValue.toString()),
+			th);
 	}
 }

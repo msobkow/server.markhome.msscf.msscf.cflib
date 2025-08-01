@@ -25,6 +25,8 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibNullArgumentException extends CFLibArgumentException {
 
+	TBD: Replicate CFLibInvalidArgumentException coding with NullArgument messaging
+	
 	public CFLibNullArgumentException(
 		String msg )
 	{
@@ -76,9 +78,9 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		String argName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNullArgumentException(
@@ -89,10 +91,10 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 			th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNullArgumentException(
@@ -147,9 +149,9 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		String argName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )) );
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )) );
 		this.localMessage = String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	public CFLibNullArgumentException(
@@ -160,9 +162,9 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 }

@@ -27,6 +27,8 @@ public class CFLibMustOverrideException extends IllegalStateException {
 
 	protected String localizedMessage = null;
 
+	TBD: replicate CFLibInvalidArgumentException with base CFLibArgumentException base implementation incorporated.
+
 	public CFLibMustOverrideException(
 		String msg )
 	{
@@ -39,9 +41,9 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -51,10 +53,10 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
 				th );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -71,9 +73,9 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		String methName,
 		String msg )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -83,10 +85,10 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		String msg,
 		Throwable th )
 	{
-		super( fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
 				th );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() ": " " )
+		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() ": " " )
 					+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
 	}
 
@@ -100,9 +102,9 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		String methName )
 	{
 		super( String.format(Inz.s("cflib.CFLibMustOverrideException.default"),
-			throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )));
+			throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )));
 		this.localizedMessage = String.format(Inz.x("cflib.CFLibMustOverrideException.default"),
-			throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " ));
+			throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " ));
 	}
 
 	public CFLibMustOverrideException(
@@ -111,7 +113,7 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibMustOverrideException.default"),
-			throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )),
+			throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )),
 			th );
 	}
 
@@ -121,10 +123,10 @@ public class CFLibMustOverrideException extends IllegalStateException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibMustOverrideException.default"),
-			fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " )),
+			fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
 			th );
 		this.localizedMessage = String.format(Inz.x("cflib.CFLibMustOverrideException.default"),
-			fieldName + ( ( ( methName != null ) && ( methName.length() > 0 )) ? "." + methName + "() " : " " ));
+			fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
 	}
 
 	@Override

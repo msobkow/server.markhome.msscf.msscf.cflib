@@ -25,97 +25,245 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 
-	protected String relnType = null;
-	protected String relnName = null;
-	protected String relnTarget = null;
-	protected Object pkey = null;
+	protected String enRelnType = null;
+	protected String xRelnType = null;
+
+	protected String enRelnName = null;
+	protected String xRelnName = null;
+
+	protected String enRelnTarget = null;
+	protected String xRelnTarget = null;
+
+	protected Object indexKey = null;
 
 	public CFLibDependentsDetectedException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
+		super( enMsg, xMsg );
 	}
-	
+
 	public CFLibDependentsDetectedException(
-		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMsg,
+		String xMsg,
+		Object indexKey )
 	{
-		super( throwingClass, methName, msg );
+		super( enMsg, xMsg );
+		this.indexKey = indexKey;
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
+	{
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Object indexKey )
+	{
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, msg, th );
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String relationType,
-		String relationName,
-		String targetName,
-		Object argKey )
-	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-			+ ((argKey != null) ?
-				String.format(Inz.s("cflib.CFLibDependentsDetectedException.pkey"),
-					relationType, relationName, targetName, argKey.toString())
-				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					relationType, relationName, targetName)));
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-			+ ((argKey != null) ?
-				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
-					relationType, relationName, targetName, argKey.toString())
-				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
-					relationType, relationName, targetName));
-		relnType = relationType;
-		relnName = relationName;
-		relnTarget = targetName;
-		pkey = argKey;
-	}
-
-	public CFLibDependentsDetectedException(
-		Class<?> throwingClass,
-		String methName,
-		String relationType,
-		String relationName,
-		String targetName,
-		Object argKey,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Object indexKey,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-			+ ((argKey != null) ?
-				String.format(Inz.s("cflib.CFLibDependentsDetectedException.pkey"),
-					relationType, relationName, targetName, argKey.toString())
+		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Throwable th )
+	{
+		super( 
+				String.format(Inz.s("cflib.CFLibDependentsDetectedException.sqlexcept"),
+					(throwingClass.getName() + (( enMethName != null && !enMethName.isEmpty())? ("." + enMethName + "()") : "")),
+					th.getMessage()),
+				String.format(Inz.x("cflib.CFLibDependentsDetectedException.sqlexcept"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					th.getMessage()),
+				th);
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Object indexKey )
+	{
+		super( ((indexKey != null)
+					? String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+				((indexKey != null)
+					? String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))));
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		Object indexKey,
+		Throwable th)
+	{
+		super( ((indexKey != null)
+					? String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+				((indexKey != null)
+					? String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						indexKey.toString())
+					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))),
+				th);
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enRelationType,
+		String xRelationType,
+		String enRelationName,
+		String xRelationName,
+		String enTargetName,
+		String xTargetName,
+		Object indexKey )
+	{
+		super( ((indexKey != null) ?
+				String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
+					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					enRelationType, enRelationName, enTargetName, indexKey.toString())
 				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					relationType, relationName, targetName)),
-			th );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && ( methName.length() > 0 ))	? "." + methName + "() " : " " )
-			+ ((argKey != null) ?
-				String.format(Inz.x("cflib.CFLibDependentsDetectedException.pkey"),
-					relationType, relationName, targetName, argKey.toString())
-				: String.format(Inz.x("cflib.CFLibDependentsDetectedException.default"),
-					relationType, relationName, targetName));
-		relnType = relationType;
-		relnName = relationName;
-		relnTarget = targetName;
-		pkey = argKey;
+					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					enRelationType, enRelationName, enTargetName)),
+			((indexKey != null) ?
+				String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
+					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
+					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
+					indexKey.toString())
+				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
+					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
+					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)));
+		enRelnType = enRelationType;
+		xRelnType = xRelationType;
+		enRelnName = enRelationName;
+		xRelnName = xRelationName;
+		enRelnTarget = enTargetName;
+		xRelnTarget = xTargetName;
+		this.indexKey = indexKey;
+	}
+
+	public CFLibDependentsDetectedException(
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		String enRelationType,
+		String xRelationType,
+		String enRelationName,
+		String xRelationName,
+		String enTargetName,
+		String xTargetName,
+		Object indexKey,
+		Throwable th )
+	{
+		super( ((indexKey != null) ?
+				String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
+					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					enRelationType, enRelationName, enTargetName, indexKey.toString())
+				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					enRelationType, enRelationName, enTargetName)),
+			((indexKey != null) ?
+				String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
+					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
+					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
+					indexKey.toString())
+				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
+					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
+					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)));
+		enRelnType = enRelationType;
+		xRelnType = xRelationType;
+		enRelnName = enRelationName;
+		xRelnName = xRelationName;
+		enRelnTarget = enTargetName;
+		xRelnTarget = xTargetName;
+		this.indexKey = indexKey;
 	}
 
 	public String getRelationType() {
-		return( relnType );
+		return( enRelnType );
 	}
 	
 	public String getRelationName() {
-		return( relnName );
+		return( enRelnName );
 	}
 	
-	public Object getPrimaryKey() {
-		return( pkey );
+	public String getRelationTarget() {
+		return( enRelnTarget );
+	}
+
+	public String getLocalizedRelationType() {
+		return( (xRelnType != null && !xRelnType.isEmpty()) ? xRelnType : enRelnType );
+	}
+	
+	public String getLocalizedRelationName() {
+		return( (xRelnName != null && !xRelnName.isEmpty()) ? xRelnName : enRelnName );
+	}
+	
+	public String getLocalizedRelationTarget() {
+		return( (xRelnTarget != null && !xRelnTarget.isEmpty()) ? xRelnTarget : enRelnTarget );
+	}
+
+	public Object getIndexKey() {
+		return( indexKey );
 	}
 }

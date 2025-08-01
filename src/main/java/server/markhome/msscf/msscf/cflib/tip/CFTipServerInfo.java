@@ -40,6 +40,7 @@ import javax.crypto.NoSuchPaddingException;
 import org.apache.commons.codec.binary.Base64;
 
 import server.markhome.msscf.msscf.cflib.*;
+import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFTipServerInfo {
 
@@ -73,7 +74,8 @@ public class CFTipServerInfo {
 		}
 
 		void setSchemaName( String value ) {
-			final String S_ProcName = "setSchemaName";
+			final String enProcName = Inz.s(CFTipServerInfo.class.getName() + ".setSchemaName");
+			final String xProcName = Inz.x(CFTipServerInfo.class.getName() + ".setSchemaName");
 			if( ( value == null ) || ( value.length() <= 0 ) ) {
 				throw new CFLibNullArgumentException( getClass(),
 					S_ProcName,
@@ -81,8 +83,22 @@ public class CFTipServerInfo {
 					"value" );
 			}
 			if( value.length() > SCHEMA_L_NAME ) {
-				throw new CFLibArgumentOverflowException( getClass(),
+				throw new CFLibArgumentOverflowException(
+					CFTipServerInfo.class,
+					enProcName,
+					xProcName,
+					0,
+					Inz.s(CFTipServerInfo.class.getName() + ".setSchemaName.value"),//value
+					Inz.x(CFTipServerInfo.class.getName() + ".setSchemaName.value"),//value
+					value.length(),
+					SCHEMA_L_NAME );
+					
+				
+				
+				
+				getClass(),
 					S_ProcName,
+					Inz.x(CFTipServerInfo.class.getName() + "." + S_ProcName);
 					1,
 					"value.length()",
 					value.length(),
