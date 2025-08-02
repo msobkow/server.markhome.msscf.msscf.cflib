@@ -24,117 +24,263 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibNotSupportedException extends UnsupportedOperationException {
-	TBD: replicate CFLibMustOverrideException with slightly different messaging resources under the hood.
 
-	String localizedMessage = null;
+	protected String localMessage = null;
 
 	public CFLibNotSupportedException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
-		localizedMessage = msg;
+		super( enMsg );
+		this.localMessage = xMsg;
+	}
+
+	public CFLibNotSupportedException(
+		String enMsg, String xMsg, Throwable cause) {
+			super(enMsg, cause);
+			this.localMessage = xMsg;
 	}
 
 	public CFLibNotSupportedException(
 		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
-				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ) );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
-				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibNotSupportedException(
 		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
-				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" ),
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localizedMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() ": " " )
-				+ ( ( ( msg != null ) && ( msg.length() > 0 ) )	? msg : "" );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibNotSupportedException(
-		String fieldName,
-		String msg )
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg )
 	{
-		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localizedMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
 	public CFLibNotSupportedException(
-		String fieldName,
-		String methName,
-		String msg )
-	{
-		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
-	}
-
-	public CFLibNotSupportedException(
-		String fieldName,
-		String methName,
-		String msg,
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localizedMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
+
+	// public CFLibNotSupportedException(
+	// 	String enFieldName,
+	// 	String xFieldName,
+	// 	String enMsg,
+	// 	String xMsg )
+	// {
+	// 	super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+	// 			enFieldName,
+	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
+	// 	this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+	// 			(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
+	// 			( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
+	// }
+
+	public CFLibNotSupportedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibNotSupportedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Throwable th )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibNotSupportedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg )
+	{
+		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibNotSupportedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg,
+		Throwable th )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
 
 	public CFLibNotSupportedException()
 	{
-		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"), ""));
-		this.localizedMessage = String.format(Inz.s("cflib.CFLibNotSupportedException.default"), "");
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"), "").trim());
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"), "").trim();
+	}
+
+	public CFLibNotSupportedException(Throwable th)
+	{
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"), "").trim(), th);
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"), "").trim();
 	}
 
 	public CFLibNotSupportedException(
 		Class<?> throwingClass,
-		String methName )
+		String enMethName,
+		String xMethName)
 	{
-		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )));
-		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 	}
 
 	public CFLibNotSupportedException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
-				th );
-		this.localizedMessage = String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+			th);
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 	}
 
 	public CFLibNotSupportedException(
-		String fieldName,
-		String methName,
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName)
+	{
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
+				enFieldName + (( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
+	}
+	public CFLibNotSupportedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
 		Throwable th )
 	{
-		super(String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
-				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
-				th );
-		this.localizedMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
-				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
+		super( String.format(Inz.s("cflib.CFLibNotSupportedException.default"),
+				enFieldName + (( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+			th);
+		this.localMessage = String.format(Inz.x("cflib.CFLibNotSupportedException.default"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 	}
 
 	@Override
 	public String getLocalizedMessage() {
-		if (localizedMessage != null) {
-			return localizedMessage;
+		if (localMessage != null) {
+			return localMessage;
 		}
 		else {
 			return getMessage();
