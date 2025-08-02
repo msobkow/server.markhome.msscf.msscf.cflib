@@ -25,6 +25,7 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibUnsupportedClassException extends IllegalStateException {
 	TBD: Clone CFLibMustOverrideException when migrated as base template for this exception class
+	TBD: Remove xMethName, xArgName
 
 	protected String localMessage = null;
 

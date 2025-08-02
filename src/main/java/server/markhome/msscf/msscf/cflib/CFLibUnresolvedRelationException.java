@@ -24,6 +24,8 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibUnresolvedRelationException extends IllegalStateException {
+	TBD: Remove xMethName, xArgName
+
 	protected String localMessage = null;
 
 	protected String enRelnType = null;
@@ -53,39 +55,39 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		int argNo,
 		String enArgName,
@@ -94,12 +96,12 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				enArgName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				argNo,
 				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
@@ -107,7 +109,7 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		int argNo,
 		String enArgName,
@@ -117,13 +119,13 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				enArgName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				argNo,
 				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
@@ -146,41 +148,41 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
-				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
-				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		int argNo,
 		String enArgName,
@@ -189,12 +191,12 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		String xMsg )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				enArgName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				argNo,
 				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
@@ -203,7 +205,7 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		int argNo,
 		String enArgName,
@@ -213,13 +215,13 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
 				enArgName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
 				argNo,
 				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
@@ -233,45 +235,45 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName )
 	{
 		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )));
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"),
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ))));
 	}
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
 					th);
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"),
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ))));
 	}
 
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibUnresolvedRelationException.default"),
-				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" )),
+				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
 			th);
 		this.localMessage = String.format(Inz.x("cflib.CFLibUnresolvedRelationException.default"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ));
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ));
 	}
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -282,24 +284,24 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Object indexKey)
 	{
 		super( (indexKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					indexKey.toString(),
 					enTargetName)
 				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					enTargetName ));
 		this.localMessage = (indexKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					indexKey.toString(),
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)
 				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName);
@@ -314,7 +316,7 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 
 	public CFLibUnresolvedRelationException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -326,25 +328,25 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Throwable th )
 	{
 		super( (indexKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					indexKey.toString(),
 					enTargetName)
 				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					enTargetName ),
 			th);
 		this.localMessage = (indexKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					indexKey.toString(),
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)
 				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName);
@@ -360,7 +362,7 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -371,24 +373,24 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Object indexKey)
 	{
 		super( (indexKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					indexKey.toString(),
 					enTargetName)
 				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					enTargetName ));
 		this.localMessage = (indexKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					indexKey.toString(),
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)
 				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName);
@@ -404,7 +406,7 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 	public CFLibUnresolvedRelationException(
 		String enFieldName,
 		String xFieldName,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -416,25 +418,25 @@ public class CFLibUnresolvedRelationException extends IllegalStateException {
 		Throwable th)
 	{
 		super( (indexKey != null) ? String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					indexKey.toString(),
 					enTargetName)
 				: String.format(Inz.s("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+					enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 					enRelationType,
 					enRelationName,
 					enTargetName ),
 			th);
 		this.localMessage = (indexKey != null) ? String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullkey"),//%1$s%2$s relation %3$s key %4%s referencing %5$s could not be resolved
-					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					indexKey.toString(),
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)
 				: String.format(Inz.x("cflib.CFLibUnresolvedRelationException.fullnokey"),//%1$s%2$s relation %3$s referencing %4$s could not be resolved
-					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" ))),
+					((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName);

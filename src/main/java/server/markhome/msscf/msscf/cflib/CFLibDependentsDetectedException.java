@@ -24,6 +24,7 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibDependentsDetectedException extends CFLibRuntimeException {
+	TBD: Remove xMethName, xArgName
 
 	protected String enRelnType = null;
 	protected String xRelnType = null;
@@ -54,113 +55,113 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
-		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
+		super( throwingClass, methName, xMethName, enMsg, xMsg );
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg,
 		Object indexKey )
 	{
-		super( throwingClass, enMethName, xMethName, enMsg, xMsg );
+		super( throwingClass, methName, xMethName, enMsg, xMsg );
 		this.indexKey = indexKey;
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
+		super( throwingClass, methName, xMethName, enMsg, xMsg, th );
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enMsg,
 		String xMsg,
 		Object indexKey,
 		Throwable th )
 	{
-		super( throwingClass, enMethName, xMethName, enMsg, xMsg, th );
+		super( throwingClass, methName, xMethName, enMsg, xMsg, th );
 		this.indexKey = indexKey;
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		Throwable th )
 	{
 		super( 
 				String.format(Inz.s("cflib.CFLibDependentsDetectedException.sqlexcept"),
-					(throwingClass.getName() + (( enMethName != null && !enMethName.isEmpty())? ("." + enMethName + "()") : "")),
+					(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : "")),
 					th.getMessage()),
 				String.format(Inz.x("cflib.CFLibDependentsDetectedException.sqlexcept"),
-					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 					th.getMessage()),
 				th);
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		Object indexKey )
 	{
 		super( ((indexKey != null)
 					? String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
-						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
 					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((indexKey != null)
 					? String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 						indexKey.toString())
 					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))));
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))))));
 		this.indexKey = indexKey;
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		Object indexKey,
 		Throwable th)
 	{
 		super( ((indexKey != null)
 					? String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
-						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 						indexKey.toString())
 					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-						(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "" )))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((indexKey != null)
 					? String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 						indexKey.toString())
 					: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))))),
+						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))))),
 				th);
 		this.indexKey = indexKey;
 	}
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -172,20 +173,20 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 	{
 		super( ((indexKey != null) ?
 				String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
-					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName, indexKey.toString())
 				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName)),
 			((indexKey != null) ?
 				String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
-					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
 					indexKey.toString())
 				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)));
@@ -200,7 +201,7 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 
 	public CFLibDependentsDetectedException(
 		Class<?> throwingClass,
-		String enMethName,
+		String methName,
 		String xMethName,
 		String enRelationType,
 		String xRelationType,
@@ -213,20 +214,20 @@ public class CFLibDependentsDetectedException extends CFLibRuntimeException {
 	{
 		super( ((indexKey != null) ?
 				String.format(Inz.s("cflib.CFLibDependentsDetectedException.indexKey"),
-					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName, indexKey.toString())
 				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					(throwingClass.getName() + ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+					(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 					enRelationType, enRelationName, enTargetName)),
 			((indexKey != null) ?
 				String.format(Inz.x("cflib.CFLibDependentsDetectedException.indexKey"),
-					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName,
 					indexKey.toString())
 				: String.format(Inz.s("cflib.CFLibDependentsDetectedException.default"),
-					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : ""))),
+					(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
 					(xRelationType != null && !xRelationType.isEmpty()) ? xRelationType : enRelationType,
 					(xRelationName != null && !xRelationName.isEmpty()) ? xRelationName : enRelationName,
 					(xTargetName != null && !xTargetName.isEmpty()) ? xTargetName : enTargetName)));
