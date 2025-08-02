@@ -24,200 +24,368 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibStaleCacheDetectedException extends IllegalStateException {
-
-	TBD: Rebuild using CFLibDbException as template to acquire index tracking support
-	
 	protected String localMessage = null;
+	protected String enMsgCause = null;
+	protected String xMsgCause = null;
+	protected String enTargetTable = null;
+	protected String xTargetTable = null;
+	protected Object indexKey = null;
 
 	public CFLibStaleCacheDetectedException(
-		String msg )
+		String enMsg,
+		String xMsg )
 	{
-		super( msg );
-		this.localMessage = msg;
+		super( enMsg );
+		this.localMessage = xMsg;
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enMsg,
+		String xMsg,
+		Throwable th)
+	{
+			super(enMsg, th);
+			this.localMessage = xMsg;
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String msg )
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String msg,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
-		this.localMessage = throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibStaleCacheDetectedException(
-		String fieldName,
-		String msg )
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg )
 	{
-		super( fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localMessage = fieldName + " " + ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
 	public CFLibStaleCacheDetectedException(
-		String fieldName,
-		String methName,
-		String msg )
-	{
-		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName  + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ) );
-		this.localMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName  + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
-	}
-
-	public CFLibStaleCacheDetectedException(
-		String fieldName,
-		String methName,
-		String msg,
+		Class<?> throwingClass,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg,
 		Throwable th )
 	{
-		super( fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName  + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" ),
+		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
-		this.localMessage = fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName  + "() " : " " )
-					+ ( ( ( msg != null ) && ( msg.length() > 0 ) ) ? msg : "" );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
+				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enFieldName,
+		String xFieldName,
+		String enMsg,
+		String xMsg )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+				enFieldName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+				(xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		String enMsg,
+		String xMsg,
+		Throwable th )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()"	: "" ),
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg )
+	{
+		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
+	}
+
+	public CFLibStaleCacheDetectedException(
+		String enFieldName,
+		String xFieldName,
+		String enMethName,
+		String xMethName,
+		int argNo,
+		String enArgName,
+		String xArgName,
+		String enMsg,
+		String xMsg,
+		Throwable th )
+	{
+		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
+				enFieldName + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ),
+				argNo,
+				enArgName,
+				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
+				th );
+		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+				argNo,
+				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
 	public CFLibStaleCacheDetectedException()
 	{
-		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"), ""));
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"), "").trim());
+		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"), "").trim();
+	}
+
+	public CFLibStaleCacheDetectedException(Throwable th)
+	{
+		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"), "").trim(), th);
+		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"), "").trim();
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName )
+		String enMethName,
+		String xMethName )
 	{
 		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )));
+				throwingClass.getName() + ( ( ( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " ));
+				throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName,
+		String enMethName,
+		String xMethName,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " )),
-				th );
+				throwingClass.getName() + ( ( ( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))),
+			th);
 		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
-				throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty())	? "." + methName + "() " : " " ));
-	}
-
-	public CFLibStaleCacheDetectedException(
-		String fieldName,
-		String methName,
-		Throwable th )
-	{
-		super(String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.default"),
-				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " )),
-				th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.default"),
-				fieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ));
-
+				throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( enMethName != null && !enMethName.isEmpty()) ? "." + enMethName + "()" : "" ))));
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String msgCause,
-		String targetTable,
+		String enMethName,
+		String xMethName,
+		String enMsgCause,
+		String xMsgCause,
+		String enTargetTable,
+		String xTargetTable,
 		Object argKey )
 	{
-		super( ((targetTable != null && targetTable.length() > 0) ?
+		super( ((enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable,
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
+							enTargetTable,
 							argKey.toString())
 						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable))
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
+							enTargetTable))
 					: ((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
 							argKey.toString())
 						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause))));
-		this.localMessage = ((targetTable != null && targetTable.length() > 0) ?
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause))));
+		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable,
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
+							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable))
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
+							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
 					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause)));
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
+		this.enMsgCause = enMsgCause;
+		this.xMsgCause = xMsgCause;
+		this.enTargetTable = enTargetTable;
+		this.xTargetTable = xTargetTable;
+		this.indexKey = argKey;
 	}
 
 	public CFLibStaleCacheDetectedException(
 		Class<?> throwingClass,
-		String methName,
-		String msgCause,
-		String targetTable,
+		String enMethName,
+		String xMethName,
+		String enMsgCause,
+		String xMsgCause,
+		String enTargetTable,
+		String xTargetTable,
 		Object argKey,
 		Throwable th )
 	{
-		super( ((targetTable != null && targetTable.length() > 0) ?
+		super( ((enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable,
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
+							enTargetTable,
 							argKey.toString())
 						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable))
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
+							enTargetTable))
 					: ((argKey != null) ? String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause,
 							argKey.toString())
 						: String.format(Inz.s("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause))),
-				th );
-		this.localMessage = ((targetTable != null && targetTable.length() > 0) ?
+							throwingClass.getName() + ( ( ( enMethName != null ) && !enMethName.isEmpty()) ? "." + enMethName + "() " : " "),
+							enMsgCause))),
+			th);
+		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable,
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
+							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
-							targetTable))
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
+							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
 					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause,
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " "),
-							msgCause)));
+							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((enMethName != null && !enMethName.isEmpty()) ? ("." + enMethName + "()") : "")),
+							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
+		this.enMsgCause = enMsgCause;
+		this.xMsgCause = xMsgCause;
+		this.enTargetTable = enTargetTable;
+		this.xTargetTable = xTargetTable;
+		this.indexKey = argKey;
+	}
+
+	public Object getIndexKey() {
+		return indexKey;
+	}
+
+	public String getMsgCause() {
+		return enMsgCause;
+	}
+
+	public String getLocalizedMsgCause() {
+		if (xMsgCause != null && !xMsgCause.isEmpty())
+			return xMsgCause;
+		else
+			return enMsgCause;
+	}
+
+	public String getTargetTable() {
+		return enTargetTable;
+	}
+
+	public String getLocalizedTargetTable() {
+		if (xTargetTable != null && !xTargetTable.isEmpty())
+			return xTargetTable;
+		else
+			return enTargetTable;
 	}
 
 	@Override
