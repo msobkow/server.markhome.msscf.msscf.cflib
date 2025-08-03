@@ -24,7 +24,6 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibCollisionDetectedException extends CFLibRuntimeException {
-	TBD: Remove xMethName, xArgName
 
 	protected Object indexKey = null;
 
@@ -38,28 +37,25 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 	public CFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
-		super( throwingClass, methName, xMethName, enMsg, xMsg );
+		super( throwingClass, methName, enMsg, xMsg );
 	}
 
 	public CFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super( throwingClass, methName, xMethName, enMsg, xMsg, th );
+		super( throwingClass, methName,  enMsg, xMsg, th );
 	}
 
 	public CFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Object argKey )
 	{
 		super( ((argKey != null)
@@ -70,32 +66,31 @@ public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
 				((argKey != null)
 					? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
 					: String.format(Inz.s("cflib.CFLibCollisionDetectedException.default"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))))));
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))));
 		indexKey = argKey;
 	}
 
 	public CFLibCollisionDetectedException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Object argKey,
 		Throwable th )
 	{
 		super( ((argKey != null)
 					? String.format(Inz.s("cflib.CFLibCollisionDetectedException.pkey"),
-						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
 					: String.format(Inz.s("cflib.CFLibCollisionDetectedException.default"),
-						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))),
 				((argKey != null)
 					? String.format(Inz.x("cflib.CFLibCollisionDetectedException.pkey"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
 						argKey.toString())
 					: String.format(Inz.s("cflib.CFLibCollisionDetectedException.default"),
-						(throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : ""))))),
+						(throwingClass.getName() + ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")))),
 				th);
 		indexKey = argKey;
 	}

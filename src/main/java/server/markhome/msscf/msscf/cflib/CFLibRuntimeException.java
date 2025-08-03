@@ -27,7 +27,6 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
  * The base exception for many others in the CFLib exception hierarchy, CFLibRuntimeException specializes RuntimException with localization hooks and support
  */
 public class CFLibRuntimeException extends RuntimeException {
-	TBD: Remove xMethName, xArgName
 
 	protected String localMessage = null;
 
@@ -40,86 +39,83 @@ public class CFLibRuntimeException extends RuntimeException {
 	}
 
 	public CFLibRuntimeException(
-		String enMsg, String xMsg, Throwable cause) {
-			super(enMsg, cause);
+		String enMsg,
+		String xMsg,
+		Throwable th)
+	{
+			super(enMsg, th);
 			this.localMessage = xMsg;
 	}
 
 	public CFLibRuntimeException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibRuntimeException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibRuntimeException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
 	public CFLibRuntimeException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
@@ -141,15 +137,14 @@ public class CFLibRuntimeException extends RuntimeException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.FldMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -157,17 +152,16 @@ public class CFLibRuntimeException extends RuntimeException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.FldMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -175,22 +169,20 @@ public class CFLibRuntimeException extends RuntimeException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super(String.format(Inz.s("cflib.CFLibRuntimeException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -198,24 +190,22 @@ public class CFLibRuntimeException extends RuntimeException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibRuntimeException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibRuntimeException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
