@@ -289,20 +289,20 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 							enMsgCause))));
 		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
 					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
 		this.enMsgCause = enMsgCause;
 		this.xMsgCause = xMsgCause;
@@ -342,20 +342,20 @@ public class CFLibStaleCacheDetectedException extends IllegalStateException {
 			th);
 		this.localMessage = (((xTargetTable != null && !xTargetTable.isEmpty()) || (enTargetTable != null && !enTargetTable.isEmpty()) ?
 					((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetargetkey"),//"%1$sStale cache detected due to %2$s by %3$s key %4$s"
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable,
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causetarget"),//"%1$sStale cache detected due to %2$s by %3$s
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							(xTargetTable != null && !xTargetTable.isEmpty()) ? xTargetTable : enTargetTable))
 					: ((argKey != null) ? String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.causekey"),//"%1$sStale cache detected due to %2$s key %4$s"
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause),
 							argKey.toString())
 						: String.format(Inz.x("cflib.CFLibStaleCacheDetectedException.cause"),//"%1$sStale cache detected due to %2$s
-							throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "")),
+							throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""),
 							((xMsgCause != null && !xMsgCause.isEmpty()) ? xMsgCause : enMsgCause)))));
 		this.enMsgCause = enMsgCause;
 		this.xMsgCause = xMsgCause;
