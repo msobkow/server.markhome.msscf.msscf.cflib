@@ -24,7 +24,6 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibUniqueIndexViolationException extends IllegalStateException {
-	TBD: Remove xMethName, xArgName
 
 	protected String localMessage = null;
 	protected Object indexKey = null;
@@ -49,78 +48,72 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
@@ -142,7 +135,6 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
@@ -150,7 +142,7 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -158,7 +150,6 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
@@ -168,7 +159,7 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -176,22 +167,20 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -199,24 +188,22 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -228,49 +215,46 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
-		String methName,
-		String xMethName )
+		String methName )
 	{
 		super(String.format(Inz.s("cflib.CFLibUniqueIndexViolation.default"),
-				throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ))).trim());
+				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim());
 		this.localMessage = String.format(Inz.x("cflib.CFLibUniqueIndexViolation.default"),
-				throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))).trim();
+				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibUniqueIndexViolation.default"),
-				throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" ))).trim(),
+				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim(),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibUniqueIndexViolation.default"),
-				throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )))).trim();
+				throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )).trim();
 	}
 
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enArgIndexName,
 		String xArgIndexName,
 		Object argKey )
 	{
 		super( (argKey != null) ? String.format(Inz.s("cflib.CFLibUniqueIndexViolation.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
-					throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName,
 					argKey.toString())
 				: String.format(Inz.s("cflib.CFLibUniqueIndexViolation.index"),//%1$s Detected violation of unique index %2$s
-					throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName));
 		this.localMessage = (argKey != null) ? String.format(Inz.x("cflib.CFLibUniqueIndexViolation.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName,
 					argKey.toString())
 				: String.format(Inz.x("cflib.CFLibUniqueIndexViolation.index"),//%1$s Detected violation of unique index %2$s
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName);
 		this.indexKey = argKey;
 	}
@@ -278,25 +262,24 @@ public class CFLibUniqueIndexViolationException extends IllegalStateException {
 	public CFLibUniqueIndexViolationException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enArgIndexName,
 		String xArgIndexName,
 		Object argKey,
 		Throwable th )
 	{
 		super( (argKey != null) ? String.format(Inz.s("cflib.CFLibUniqueIndexViolation.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
-					throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName,
 					argKey.toString())
 				: String.format(Inz.s("cflib.CFLibUniqueIndexViolation.index"),//%1$s Detected violation of unique index %2$s
-					throwingClass.getName() + ( ( ( methName != null && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					enArgIndexName));
 		this.localMessage = (argKey != null) ? String.format(Inz.x("cflib.CFLibUniqueIndexViolation.indexkey"),//%1$s Detected violation of unique index %2$s for key %3$s
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName,
 					argKey.toString())
 				: String.format(Inz.x("cflib.CFLibUniqueIndexViolation.index"),//%1$s Detected violation of unique index %2$s
-					throwingClass.getName() + ((xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ((( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+					throwingClass.getName() + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 					(xArgIndexName != null && !xArgIndexName.isEmpty()) ? xArgIndexName : enArgIndexName);
 		this.indexKey = argKey;
 	}

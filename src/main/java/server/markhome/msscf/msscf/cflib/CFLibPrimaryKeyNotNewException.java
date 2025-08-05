@@ -21,12 +21,9 @@
 
 package server.markhome.msscf.msscf.cflib;
 
-import org.springframework.context.annotation.Primary;
-
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
-	TBD: Remove xMethName, xArgName
 
 	protected String localMessage = null;
 	protected Object indexKey = null;
@@ -51,78 +48,72 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" )),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : ""));
 	}
 
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg	: "" ) );
 	}
 
@@ -144,7 +135,6 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
@@ -152,7 +142,7 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()"	: "" ),
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -160,7 +150,6 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
@@ -170,7 +159,7 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -178,22 +167,20 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg )
 	{
 		super(String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ));
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -201,24 +188,22 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
 		super( String.format(Inz.s("cflib.CFLibArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName,
+				argName,
 				( ( ( enMsg != null ) && ( enMsg.length() > 0 ) ) ? enMsg : "" ) ),
 				th );
 		this.localMessage = String.format(Inz.x("cflib.CFLibArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ ( ( ((xMethName != null && !xMethName.isEmpty()) ? "." + xMethName + "()" : (( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName)	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				((xArgName != null && !xArgName.isEmpty()) ? xArgName : enArgName),
+				argName,
 				( ( ( xMsg != null ) && ( xMsg.length() > 0 ) ) ? xMsg : (enMsg != null && enMsg.length() > 0) ? enMsg : "") );
 	}
 
@@ -253,7 +238,6 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Object indexKey )
 	{
 		super( ((indexKey != null)
@@ -274,7 +258,6 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 	public CFLibPrimaryKeyNotNewException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Object indexKey,
 		Throwable th)
 	{
@@ -292,36 +275,6 @@ public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 					: String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.default"),
 						(throwingClass.getName() + (( methName != null && !methName.isEmpty())? ("." + methName + "()") : ""))));
 		this.indexKey = indexKey;
-	}
-
-	public CFLibPrimaryKeyNotNewException(
-		Class<?> throwingClass,
-		String methName,
-		Object argKey )
-	{
-		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.pkey"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
-				argKey.toString()));
-		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.pkey"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
-				argKey.toString());
-		indexKey = argKey;
-	}
-
-	public CFLibPrimaryKeyNotNewException(
-		Class<?> throwingClass,
-		String methName,
-		Object argKey,
-		Throwable th )
-	{
-		super( String.format(Inz.s("cflib.CFLibPrimaryKeyNotNewException.pkey"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
-				argKey.toString()),
-			th );
-		this.localMessage = String.format(Inz.x("cflib.CFLibPrimaryKeyNotNewException.pkey"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "() " : " " ),
-				argKey.toString());
-		indexKey = argKey;
 	}
 
 	public Object getIndexKey() {
