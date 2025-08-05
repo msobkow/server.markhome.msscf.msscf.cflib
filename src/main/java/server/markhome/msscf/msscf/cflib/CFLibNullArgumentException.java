@@ -24,7 +24,6 @@ package server.markhome.msscf.msscf.cflib;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibNullArgumentException extends CFLibArgumentException {
-	TBD: Remove xMethName, xArgName
 
 	// Inherited constructor patterns
 
@@ -46,49 +45,43 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
-		super(throwingClass, methName, xMethName, enMsg, xMsg);
+		super(throwingClass, methName, enMsg, xMsg);
 	}
 
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super(throwingClass, methName, xMethName, enMsg, xMsg, th);
+		super(throwingClass, methName, enMsg, xMsg, th);
 	}
 
 	public CFLibNullArgumentException(
 	 	Class<?> throwingClass,
 	 	String methName,
-		String xMethName,
 	 	int argNo,
-	 	String enArgName,
-		String xArgName,
+	 	String argName,
 	 	String enMsg,
 	 	String xMsg )
 	{
-	 	super(throwingClass, methName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
+	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg);
 	}
 
 	public CFLibNullArgumentException(
 	 	Class<?> throwingClass,
 	 	String methName,
-		String xMethName,
 	 	int argNo,
-	 	String enArgName,
-		String xArgName,
+	 	String argName,
 	 	String enMsg,
 	 	String xMsg,
 	 	Throwable th )
 	{
-	 	super(throwingClass, methName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	 	super(throwingClass, methName, argNo, argName, enMsg, xMsg, th);
 	}
 
 	// public CFLibNullArgumentException(
@@ -104,141 +97,127 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg )
 	{
-		super(enFieldName, xFieldName, methName, xMethName, enMsg, xMsg);
+		super(enFieldName, xFieldName, methName, enMsg, xMsg);
 	}
 
 	public CFLibNullArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		String enMsg,
 		String xMsg,
 		Throwable th )
 	{
-		super(enFieldName, xFieldName, methName, xMethName, enMsg, xMsg, th);
+		super(enFieldName, xFieldName, methName, enMsg, xMsg, th);
 	}
 
 	public CFLibNullArgumentException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
-		String xMethName,
 	 	int argNo,
-	 	String enArgName,
-		String xArgName,
+	 	String argName,
 	 	String enMsg,
 		String xMsg )
 	{
-	 	super(enFieldName, xFieldName, methName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg);
+	 	super(enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg);
 	}
 
 	public CFLibNullArgumentException(
 	 	String enFieldName,
 		String xFieldName,
 	 	String methName,
-		String xMethName,
 	 	int argNo,
-	 	String enArgName,
-		String xArgName,
+	 	String argName,
 	 	String enMsg,
 	 	String xMsg,
 	 	Throwable th )
 	{
-	 	super(enFieldName, xFieldName, methName, xMethName, argNo, enArgName, xArgName, enMsg, xMsg, th);
+	 	super(enFieldName, xFieldName, methName, argNo, argName, enMsg, xMsg, th);
 	}
 
 	// Custom/most-often-used constructors
 
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
-		String methName,
-		String xMethName)
+		String methName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))));
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 	}
 
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		Throwable th)
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnMsg"),
-				throwingClass.getName()	+ ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			th);
 	}
 
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName )
+		String argName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName),
+				argName),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				(xArgName != null && !xArgName.isEmpty())? xArgName : enArgName));
+				argName));
 	}
 
 	public CFLibNullArgumentException(
 		Class<?> throwingClass,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName),
+				argName),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.TcmnArgMsg"),
-				throwingClass.getName()	+ ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
+				throwingClass.getName()	+ (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				(xArgName != null && !xArgName.isEmpty())? xArgName : enArgName),
+				argName),
 			th);
 	}
 
 	public CFLibNullArgumentException(
 		String enFieldName,
 		String xFieldName,
-		String methName,
-		String xMethName)
+		String methName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.FldMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))));
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )));
 	}
 
 	public CFLibNullArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		Throwable th)
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.FldMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" )),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.FldMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ))),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
 			th);
 	}
 
@@ -246,39 +225,35 @@ public class CFLibNullArgumentException extends CFLibArgumentException {
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName )
+		String argName )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName),
+				argName),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				(xArgName != null && !xArgName.isEmpty())? xArgName : enArgName));
+				argName));
 	}
 
 	public CFLibNullArgumentException(
 		String enFieldName,
 		String xFieldName,
 		String methName,
-		String xMethName,
 		int argNo,
-		String enArgName,
-		String xArgName,
+		String argName,
 		Throwable th )
 	{
 		super(String.format(Inz.s("cflib.CFLibNullArgumentException.FldArgMsg"),
-				enFieldName + ( ( ( methName != null ) && !methName.isEmpty()) ? "." + methName + "()" : "" ),
+				enFieldName + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				enArgName),
+				argName),
 			String.format(Inz.x("cflib.CFLibNullArgumentException.FldArgMsg"),
-				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + ( (xMethName != null && !xMethName.isEmpty()) ? ("." + xMethName + "()") : ( ( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" )),
+				((xFieldName != null && !xFieldName.isEmpty()) ? xFieldName : enFieldName) + (( methName != null && !methName.isEmpty()) ? ("." + methName + "()") : "" ),
 				argNo,
-				(xArgName != null && !xArgName.isEmpty())? xArgName : enArgName),
+				argName),
 			th);
 	}
 }
