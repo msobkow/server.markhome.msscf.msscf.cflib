@@ -39,6 +39,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import server.markhome.msscf.msscf.cflib.*;
+import server.markhome.msscf.msscf.cflib.inz.Inz;
 import server.markhome.msscf.msscf.cflib.xml.*;
 import org.apache.commons.codec.binary.Base64;
 // import org.apache.xerces.xni.grammars.Grammar;
@@ -165,7 +166,8 @@ public class CFTipClientHandler
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be initialized by initSessionKey()" );
+				Inz.s("cflib.tip.CFTipClientHandler.SessKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.SessKeyUninitialized"));
 		}
 		
 		byte encoded[] = sessionKey.getEncoded();
@@ -195,7 +197,8 @@ public class CFTipClientHandler
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be initialized by initSessionKey()" );
+				Inz.s("cflib.tip.CFTipClientHandler.SessKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.SessKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "AES/CBC/PKCS5Padding" );
@@ -226,7 +229,8 @@ public class CFTipClientHandler
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be initialized by initSessionKey()" );
+				Inz.s("cflib.tip.CFTipClientHandler.SessKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.SessKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "AES/CBC/PKCS5Padding" );
@@ -288,7 +292,8 @@ public class CFTipClientHandler
 		if( devicePublicKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Device keys must be initialized by createDeviceKeys() or loadDeviceKeys()" );
+				Inz.s("cflib.tip.CFTipClientHandler.DevKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.DevKeyUninitialized"));
 		}
 
 		byte encoded[] = devicePublicKey.getEncoded();
@@ -308,7 +313,8 @@ public class CFTipClientHandler
 		if( devicePrivateKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Device keys must be initialized by createDeviceKeys() or loadDeviceKeys()" );
+				Inz.s("cflib.tip.CFTipClientHandler.DevKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.DevKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "RSA/ECB/PKCS1Padding" );
@@ -387,13 +393,15 @@ public class CFTipClientHandler
 		if( responseHandler == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Response handler must be set first by setResponseHandler()" );
+				Inz.s("cflib.tip.CFTipClientHandler.ResponseHandlerUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.ResponseHandlerUninitialized"));
 		}
 
 		if( serverInfo == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Server info must be queried first by requestServerInfo()" );
+				Inz.s("cflib.tip.CFTipClientHandler.ServerInfoUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.ServerInfoUninitialized"));
 		}
 
 		if( ( body == null ) || ( body.length() <= 0 ) ) {
@@ -457,19 +465,22 @@ public class CFTipClientHandler
 		if( responseHandler == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Response handler must be set first by setResponseHandler()" );
+				Inz.s("cflib.tip.CFTipClientHandler.ResponseHandlerUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.ResponseHandlerUninitialized"));
 		}
 
 		if( serverInfo == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Server info must be queried first by requestServerInfo()" );
+				Inz.s("cflib.tip.CFTipClientHandler.ServerInfoUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.ServerInfoUninitialized"));
 		}
 
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be set first by logging in" );
+				Inz.s("cflib.tip.CFTipClientHandler.SessionKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipClientHandler.SessionKeyUninitialized"));
 		}
 
 		if( ( body == null ) || ( body.length() <= 0 ) ) {

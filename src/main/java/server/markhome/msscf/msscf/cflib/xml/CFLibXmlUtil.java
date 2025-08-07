@@ -31,6 +31,7 @@ import server.markhome.msscf.msscf.cflib.CFLibArgumentRangeException;
 import server.markhome.msscf.msscf.cflib.CFLibArgumentUnderflowException;
 import server.markhome.msscf.msscf.cflib.CFLibInvalidArgumentException;
 import server.markhome.msscf.msscf.cflib.CFLibNullArgumentException;
+import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 public class CFLibXmlUtil {
 
@@ -54,7 +55,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DD, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.DateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.DateInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -72,7 +74,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DD, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.DateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.DateInvalid"), value));
 		}
 
         int year = Integer.parseInt( value.substring( 0, 4 ) );
@@ -84,24 +87,26 @@ public class CFLibXmlUtil {
 		return( retval );
 	}
 
-	public static Calendar parseDate( String fieldName, String value ) {
+	public static Calendar parseDate( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName = "parseDate";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 
 		if( value.length() != 10 ) {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DD, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.DateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.DateInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -115,11 +120,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(8) )
 				&& Character.isDigit( value.charAt(9) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DD, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.DateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.DateInvalid"), value));
 		}
 
         int year = Integer.parseInt( value.substring( 0, 4 ) );
@@ -142,7 +149,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be HH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimeInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -158,7 +166,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be HH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimeInvalid"), value));
 		}
 
 		int hour = Integer.parseInt( value.substring( 0, 2 ) );
@@ -170,24 +179,26 @@ public class CFLibXmlUtil {
 		return( retval );
 	}
 
-	public static Calendar parseTime( String fieldName, String value ) {
+	public static Calendar parseTime( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName = "parseTime";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 		
 		if( value.length() != 8 ) {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be HH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimeInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -199,11 +210,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(6) )
 				&& Character.isDigit( value.charAt(7) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be HH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimeInvalid"), value));
 		}
 
 		int hour = Integer.parseInt( value.substring( 0, 2 ) );
@@ -226,7 +239,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -253,7 +267,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value));
 		}
 		
         int year = Integer.parseInt( value.substring( 0, 4 ) );
@@ -268,24 +283,26 @@ public class CFLibXmlUtil {
 		return( retval );
 	}
 
-	public static Calendar parseTimestamp( String fieldName, String value ) {
+	public static Calendar parseTimestamp( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName="parseTimestamp";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 
 		if( value.length() != 19 ) {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				1,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -308,11 +325,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(17) )
 				&& Character.isDigit( value.charAt(18) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				1,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SS, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TimestampInvalid"), value));
 		}
 		
         int year = Integer.parseInt( value.substring( 0, 4 ) );
@@ -338,7 +357,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -356,7 +376,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 
 		Calendar retval = null;
@@ -422,30 +443,33 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 
 		return( retval );
 	}
 
-	public static Calendar parseTZDate( String fieldName, String value ) {
+	public static Calendar parseTZDate( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName = "parseTZDate";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 
 		if( ( value.length() != 11 ) && ( value.length() != 16 ) ) {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -459,11 +483,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(8) )
 				&& Character.isDigit( value.charAt(9) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 
 		Calendar retval = null;
@@ -525,11 +551,13 @@ public class CFLibXmlUtil {
             retval.getTimeInMillis(); // Force calendar resync based on input values
 		}
 		else {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDZ or YYYY-MM-DD+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZDateInvalid"), value));
 		}
 
 		return( retval );
@@ -546,7 +574,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -562,7 +591,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 
 		Calendar retval = null;
@@ -629,30 +659,33 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 		
 		return( retval );
 	}
 
-	public static Calendar parseTZTime( String fieldName, String value ) {
+	public static Calendar parseTZTime( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName = "parseTZTime";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 		
 		if( ( value.length() != 9 ) && ( value.length() != 14 ) ) {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -664,11 +697,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(6) )
 				&& Character.isDigit( value.charAt(7) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 
 		Calendar retval = null;
@@ -731,11 +766,13 @@ public class CFLibXmlUtil {
             retval.getTimeInMillis(); // Force calendar resync based on input values
 		}
 		else {
-			throw new CFLibInvalidArgumentException( fieldName,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be HH:MI:SSZ or HH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimeInvalid"), value));
 		}
 		
 		return( retval );
@@ -752,7 +789,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -779,7 +817,8 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 		
 		Calendar retval = null;
@@ -855,30 +894,33 @@ public class CFLibXmlUtil {
 				S_ProcName,
 				1,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 
 		return( retval );
 	}
 
-	public static Calendar parseTZTimestamp( String fieldName, String value ) {
+	public static Calendar parseTZTimestamp( String enFieldName, String xFieldName, String value ) {
 		final String S_ProcName = "parseTZTimestamp";
-		if( ( fieldName == null ) || ( fieldName.length() <= 0 ) ) {
+		if( ( enFieldName == null ) || ( enFieldName.length() <= 0 ) ) {
 			throw new CFLibNullArgumentException( CFLibXmlUtil.class,
 				S_ProcName,
 				1,
-				"fieldName" );
+				"enFieldName" );
 		}
 		if( ( value == null ) || ( value.length() == 0 ) ) {
 			return( null );
 		}
 
 		if( ( value.length() != 20 ) && ( value.length() != 25 ) ){
-			throw new CFLibInvalidArgumentException( CFLibXmlUtil.class,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 		
 		if( ! ( Character.isDigit( value.charAt(0) )
@@ -901,11 +943,13 @@ public class CFLibXmlUtil {
 				&& Character.isDigit( value.charAt(17) )
 				&& Character.isDigit( value.charAt(18) ) ) )
 		{
-			throw new CFLibInvalidArgumentException( CFLibXmlUtil.class,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 		
 		Calendar retval = null;
@@ -977,11 +1021,13 @@ public class CFLibXmlUtil {
             retval.getTimeInMillis(); // Force calendar resync based on input values
 		}
 		else {
-			throw new CFLibInvalidArgumentException( CFLibXmlUtil.class,
+			throw new CFLibInvalidArgumentException( enFieldName,
+				xFieldName,
 				S_ProcName,
-				2,
+				3,
 				"value",
-				"Invalid value format, must be YYYY-MM-DDTHH:MI:SSZ or YYYY-MM-DDTHH:MI:SS+HO:MO, \"" + value + "\" is invalid");
+				String.format(Inz.s("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value),
+				String.format(Inz.x("cflib.xml.CFLibXmlUtil.TZTimestampInvalid"), value));
 		}
 
 		return( retval );
@@ -1216,7 +1262,8 @@ public class CFLibXmlUtil {
 					if( ! Character.isValidCodePoint( ch ) ) {
 						throw new CFLibArgumentRangeException( CFLibXmlUtil.class,
 							S_ProcName,
-							"Only valid code points can be formatted, ch is out of range" );
+							Inz.s("cflib.xml.CFLibXmlUtil.XmlChOutOfRange"),
+							Inz.x("cflib.xml.CFLibXmlUtil.XmlChOutOfRange"));
 					}
 					int charCode = (int)ch;
 					String seq = "&#" + Integer.toString( charCode ) + ";";
@@ -1356,7 +1403,8 @@ public class CFLibXmlUtil {
 					if( ! Character.isValidCodePoint( ch ) ) {
 						throw new CFLibArgumentRangeException( CFLibXmlUtil.class,
 							S_ProcName,
-							"Only valid code points can be formatted, ch is out of range" );
+							Inz.s("cflib.xml.CFLibXmlUtil.XmlChOutOfRange"),
+							Inz.x("cflib.xml.CFLibXmlUtil.XmlChOutOfRange"));
 					}
 					int charCode = (int)ch;
 					String seq = "&#" + Integer.toString( charCode ) + ";";

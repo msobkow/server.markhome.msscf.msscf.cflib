@@ -74,8 +74,7 @@ public class CFTipServerInfo {
 		}
 
 		void setSchemaName( String value ) {
-			final String enProcName = Inz.s(CFTipServerInfo.class.getName() + ".setSchemaName");
-			final String xProcName = Inz.x(CFTipServerInfo.class.getName() + ".setSchemaName");
+			final String S_ProcName = "setSchemaName";
 			if( ( value == null ) || ( value.length() <= 0 ) ) {
 				throw new CFLibNullArgumentException( getClass(),
 					S_ProcName,
@@ -85,21 +84,8 @@ public class CFTipServerInfo {
 			if( value.length() > SCHEMA_L_NAME ) {
 				throw new CFLibArgumentOverflowException(
 					CFTipServerInfo.class,
-					enProcName,
-					xProcName,
-					0,
-					Inz.s(CFTipServerInfo.class.getName() + ".setSchemaName.value"),//value
-					Inz.x(CFTipServerInfo.class.getName() + ".setSchemaName.value"),//value
-					value.length(),
-					SCHEMA_L_NAME );
-					
-				
-				
-				
-				getClass(),
 					S_ProcName,
-					Inz.x(CFTipServerInfo.class.getName() + "." + S_ProcName);
-					1,
+					0,
 					"value.length()",
 					value.length(),
 					SCHEMA_L_NAME );
@@ -266,8 +252,9 @@ public class CFTipServerInfo {
 		{
 			throw new CFLibRuntimeException( getClass(),
 				S_ProcName,
-				"Caught " + e.getClass().getName() + " -- " + e.getMessage(),
-				e );
+				String.format(Inz.s("cflib.tip.CFTipServerInfo.CaughtException"), e.getClass().getName(), e.getMessage()),
+				String.format(Inz.x("cflib.tip.CFTipServerInfo.CaughtException"), e.getClass().getName(), e.getLocalizedMessage()),
+				e);
 		}
 		serverLoginKey = serverEncodedKey;
 	}
@@ -302,7 +289,8 @@ public class CFTipServerInfo {
 		if( serverPublicKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Server public key must be set first" );
+				Inz.s("cflib.tip.CFTipServerInfo.ServerPublicKeyNotInitialized"),
+				Inz.x("cflib.tip.CFTipServerInfo.ServerPublicKeyNotInitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "RSA/ECB/PKCS1Padding" );
@@ -332,7 +320,8 @@ public class CFTipServerInfo {
 		if( serverPublicKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Server key must be initialized by setEncodedServerPublicKey()" );
+				Inz.s("cflib.tip.CFTipServerInfo.ServerPublicKeyNotInitialized"),
+				Inz.x("cflib.tip.CFTipServerInfo.ServerPublicKeyNotInitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "RSA/ECB/PKCS1Padding" );
@@ -429,7 +418,8 @@ public class CFTipServerInfo {
 		if( serverPrivateKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Server keys must be initialized by initServerKeys() or setServerKeys()" );
+				Inz.s("cflib.tip.CFTipServerInfo.ServerKeysNotInitialized"),
+				Inz.x("cflib.tip.CFTipServerInfo.ServerKeysNotInitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "RSA/ECB/PKCS1Padding" );

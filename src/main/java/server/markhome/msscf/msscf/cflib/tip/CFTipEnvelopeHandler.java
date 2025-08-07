@@ -43,6 +43,7 @@ import org.apache.commons.codec.binary.Base64;
 // import org.apache.xerces.xni.grammars.Grammar;
 
 import server.markhome.msscf.msscf.cflib.*;
+import server.markhome.msscf.msscf.cflib.inz.Inz;
 import server.markhome.msscf.msscf.cflib.xml.CFLibXmlUtil;
 import server.markhome.msscf.msscf.cflib.xml.CFLibXmlCoreElementHandler;
 import server.markhome.msscf.msscf.cflib.xml.CFLibXmlCoreSaxParser;
@@ -219,7 +220,8 @@ public class CFTipEnvelopeHandler
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be initialized by setEncodedSessionKey()" );
+				Inz.s("cflib.tip.CFTipEnvelopeHandler.SessionKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipEnvelopeHandler.SessionKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "AES/CBC/PKCS5Padding" );
@@ -250,7 +252,8 @@ public class CFTipEnvelopeHandler
 		if( sessionKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Session key must be initialized by setEncodedSessionKey()" );
+				Inz.s("cflib.tip.CFTipEnvelopeHandler.SessionKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipEnvelopeHandler.SessionKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "AES/CBC/PKCS5Padding" );
@@ -295,7 +298,8 @@ public class CFTipEnvelopeHandler
 		if( clientPublicKey == null ) {
 			throw new CFLibUsageException( getClass(),
 				S_ProcName,
-				"Client public key must be set by calling setEncodedClientPublicKey() first" );
+				Inz.s("cflib.tip.CFTipEnvelopeHandler.ClientPublicKeyUninitialized"),
+				Inz.x("cflib.tip.CFTipEnvelopeHandler.ClientPublicKeyUninitialized"));
 		}
 
 		Cipher cipher = Cipher.getInstance( "RSA/ECB/PKCS1Padding" );
