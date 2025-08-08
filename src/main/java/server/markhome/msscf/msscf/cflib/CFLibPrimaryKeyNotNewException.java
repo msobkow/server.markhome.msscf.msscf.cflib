@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibPrimaryKeyNotNewException is thrown when keys collide in the database, either because an existing concatenated key collides, or because by some huge fluke of fate the CFLib dbutil data types generate collisions.  With the larger bit sizes, that should be so rare that it is not considered worth preventing or recovering from in code.
+ */
 public class CFLibPrimaryKeyNotNewException extends IllegalStateException {
 
 	protected String localMessage = null;

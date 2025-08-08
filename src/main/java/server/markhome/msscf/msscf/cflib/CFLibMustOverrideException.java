@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * If a base class only implements a method to allow it to be instantiated but it is only valid when a subclass specializes it, CFLibMustOverrideException is thrown by that base implementation.
+ */
 public class CFLibMustOverrideException extends IllegalStateException {
 
 	protected String localMessage = null;

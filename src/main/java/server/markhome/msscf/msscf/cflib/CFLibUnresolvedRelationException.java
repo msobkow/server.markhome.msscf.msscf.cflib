@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibUnresolvedRelationException is thrown when there is no target object for a foreign key found.
+ */
 public class CFLibUnresolvedRelationException extends IllegalStateException {
 
 	protected String localMessage = null;

@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibStaleCacheDetectedException is thrown when a cache or the objects in the cache have become stale and need to be refreshed from persistent storage before proceeding.
+ */
 public class CFLibStaleCacheDetectedException extends IllegalStateException {
 
 	protected String localMessage = null;

@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibDbException is thrown when a JPA database persistent store exception is thrown and caught/mapped.
+ */
 public class CFLibDbException extends CFLibRuntimeException {
 
 	protected Object indexKey = null;

@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibNotSupportedException is thrown when a method is not supported by a particular class.  This is distinct from MustOverride and NotImplementedYet in that the method will never be valid for this class.
+ */
 public class CFLibNotSupportedException extends UnsupportedOperationException {
 
 	protected String localMessage = null;

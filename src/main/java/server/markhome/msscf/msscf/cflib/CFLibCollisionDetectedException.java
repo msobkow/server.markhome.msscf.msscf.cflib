@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibCollisionDetectedException is thrown when there is already an existing entry with the specified key that conflicts with new data or other data changes.
+ */
 public class CFLibCollisionDetectedException extends CFLibRuntimeException {
 
 	protected Object indexKey = null;

@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibEmptyArgumentException is thrown when an argument is null or empty.
+ */
 public class CFLibEmptyArgumentException extends CFLibArgumentException {
 
 	// Inherited constructor patterns

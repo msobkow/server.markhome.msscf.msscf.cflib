@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibUsageException is thrown when a method is being used in the wrong sequence or the wrong way, such trying to look up values in a cache before the cache has been initialized and primed with lookup data.
+ */
 public class CFLibUsageException extends IllegalStateException {
 
 	protected String localMessage = null;

@@ -33,6 +33,9 @@ import server.markhome.msscf.msscf.cflib.CFLibInvalidArgumentException;
 import server.markhome.msscf.msscf.cflib.CFLibNullArgumentException;
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibXmlUtil provides a wide variety of XML field parsers and formatters, which are also used for JSON data streaming. The XML String methods need to be redone to use a proper XML mapping library/package.
+ */
 public class CFLibXmlUtil {
 
 	public final static Calendar localCalendar = new GregorianCalendar();

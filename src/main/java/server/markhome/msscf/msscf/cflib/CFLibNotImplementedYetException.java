@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibNotImplementedYetException is thrown when a method is not implemented yet, but is expected to be fleshed out in the future.
+ */
 public class CFLibNotImplementedYetException extends IllegalStateException {
 
 	protected String localMessage = null;

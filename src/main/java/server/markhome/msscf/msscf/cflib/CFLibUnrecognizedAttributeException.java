@@ -25,6 +25,9 @@ import java.util.*;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibUnrecognizedAttributeException is primarily thrown by the manufacted XML parsers.
+ */
 public class CFLibUnrecognizedAttributeException extends NoSuchElementException {
 
 	protected String localMessage = null;

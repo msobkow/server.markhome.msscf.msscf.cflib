@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibUnsupportedClassException is thrown when an argument is not a supported class instance or derivative.
+ */
 public class CFLibUnsupportedClassException extends IllegalStateException {
 
 	protected String localMessage = null;

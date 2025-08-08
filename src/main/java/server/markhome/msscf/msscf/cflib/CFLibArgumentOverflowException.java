@@ -27,6 +27,9 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 import java.math.*;
 
+/**
+ * CFLibArgumentOverflowException indicates that an argument exceeds the permitted value range.
+ */
 public class CFLibArgumentOverflowException extends CFLibArgumentException {
 
 	public CFLibArgumentOverflowException(

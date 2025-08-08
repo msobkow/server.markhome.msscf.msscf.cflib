@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibInvalidArgumentException is thrown when an argument is invalid for some reason, usually specified by nationalized cause phrases.
+ */
 public class CFLibInvalidArgumentException extends CFLibArgumentException {
 
 	// Inherited constructor patterns

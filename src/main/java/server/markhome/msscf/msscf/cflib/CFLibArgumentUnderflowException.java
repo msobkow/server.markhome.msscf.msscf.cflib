@@ -27,6 +27,9 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 import java.math.*;
 
+/**
+ * CFLibArgumentUnderflowException is thrown when an argument is under the minimum value allowed.
+ */
 public class CFLibArgumentUnderflowException extends CFLibArgumentException {
 
 	public CFLibArgumentUnderflowException(

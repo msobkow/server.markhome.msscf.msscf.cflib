@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibUniqueIndexViolationException is thrown when there is a violation of a unique index other than the primary key index for an underlying table.
+ */
 public class CFLibUniqueIndexViolationException extends IllegalStateException {
 
 	protected String localMessage = null;

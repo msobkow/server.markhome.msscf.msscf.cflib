@@ -23,6 +23,12 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibArgumentException provides the base implementation for a number of argument exceptions, including CFLibArgumentOverflowException,
+ * CFLibArgumentRangeExxception, CFLibArgumentUnderflowException, CFLibEmptyArgumentExeption, CFLibInvalidArgumentException, and CFLibNullArgumentException.
+ * 
+ * There is a rich set of constructors for the class, with variations that accept the class object for the caller and a method name, and versions that accept nationalized field names and method names.
+ */
 public class CFLibArgumentException extends IllegalArgumentException {
 
 	protected String localMessage = null;

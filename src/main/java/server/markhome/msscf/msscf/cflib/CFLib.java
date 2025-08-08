@@ -53,6 +53,12 @@ public class CFLib {
 
 	public final static TimeZone UTC_TIMEZONE = TimeZone.getTimeZone( "+0000" );
 
+	/**
+     * Plays an alert sound using the 'alert.wav' resource file.
+     * <p>
+     * This method attempts to load and play a WAV audio file from the classpath.
+     * If the resource is not found or an error occurs, the method fails silently.
+     */
 	public static void beep() {
 		Clip clip = null;
 		// The audio is courtesy of a whole whack of articles from stackoverflow.com, each of which got me one line closer to working
@@ -74,6 +80,17 @@ public class CFLib {
 		}
 	}
 
+    /**
+     * Creates a GregorianCalendar instance in UTC time zone with the specified date and time.
+     *
+     * @param year   the year
+     * @param month  the month (0-based, January is 0)
+     * @param day    the day of month
+     * @param hour   the hour of day
+     * @param minute the minute
+     * @param second the second
+     * @return a Calendar object set to the specified UTC date and time
+     */
 	public static Calendar getUTCGregorianCalendar(
 		int year,
 		int month,
@@ -88,11 +105,21 @@ public class CFLib {
         cal.getTimeInMillis(); // Force calendar resync based on input values
 		return( cal );
 	}
-	
+
+	/**
+     * Returns the link name of the library.
+     *
+     * @return the link name string
+     */
 	public String getLinkName() {
 		return( LinkName );
 	}
-
+	
+    /**
+     * Returns the link version of the library.
+     *
+     * @return the link version string
+     */
 	public String getLinkVersion() {
 		return( LinkVersion );
 	}

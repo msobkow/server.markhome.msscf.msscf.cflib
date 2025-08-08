@@ -23,6 +23,9 @@ package server.markhome.msscf.msscf.cflib;
 
 import server.markhome.msscf.msscf.cflib.inz.Inz;
 
+/**
+ * CFLibNullArgumentException is thrown when a required argument is null.
+ */
 public class CFLibNullArgumentException extends CFLibArgumentException {
 
 	// Inherited constructor patterns

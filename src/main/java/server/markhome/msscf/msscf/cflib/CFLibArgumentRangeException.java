@@ -27,6 +27,9 @@ import server.markhome.msscf.msscf.cflib.inz.Inz;
 
 import java.math.*;
 
+/**
+ * CFLibArgumentRangeException indicates that a value did not fall with the range minValue to maxValue, inclusive.
+ */
 public class CFLibArgumentRangeException extends CFLibArgumentException {
 	
 	public CFLibArgumentRangeException(
