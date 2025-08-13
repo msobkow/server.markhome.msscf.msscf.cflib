@@ -22,6 +22,7 @@
 package server.markhome.msscf.msscf.cflib.inz;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Inz is the main class for the CFLib Internationalization (Inz) library.
@@ -61,6 +62,8 @@ public class Inz {
      * The current system language code, used for the single-argument version of x().
      */
     protected static String systemLangCode = DEFAULT_LANG_CODE;
+
+    protected static AtomicReference<IInzEffectiveLangId> effectiveLangCallback = new AtomicReference(null);
 
     /**
      * The CFLib InzEntry references resource:server/markhome/msscf/msscf/cflib/inz/langs and
@@ -193,6 +196,70 @@ public class Inz {
     }
 
     /**
+     * Set the callback hook for getting the current session's language id string.
+     * 
+     * @param callback
+     * @return The previously registered callback
+     */
+    public static IInzEffectiveLangId installEffectiveLangIdCallback(IInzEffectiveLangId callback) {
+        if (callback == null) {
+            throw new IllegalArgumentException("callback cannot be null");
+        }
+        IInzEffectiveLangId prevCallback = effectiveLangCallback.get();
+        if (prevCallback != callback) {
+            effectiveLangCallback.compareAndSet(prevCallback, callback);
+            if (callback == effectiveLangCallback.get()) {
+                return prevCallback;
+            }
+            else {
+                throw new IllegalStateException("Error registering replacement Effective Language Id callback");
+            }
+        }
+        else {
+            return prevCallback;
+        }
+    }
+
+    /**
+     * Get the callback hook for getting the current session's language id string.
+     * 
+     * @return The IInzEffectiveLangId callback that was most recently installed; initially null.
+     */
+    public static IInzEffectiveLangId getEffectiveLangIdCallback() {
+        return effectiveLangCallback.get();
+    }
+
+    /**
+     * Get the current effective language id.  If any exceptions are thrown by the most recently installed callback, the system language code is used. If that isn't valid, the language defaults to "en".
+     * 
+     * @return The current effective language id.
+     */
+    public static String getEffectiveLangId() {
+        String effLangId;
+        IInzEffectiveLangId cb = getEffectiveLangIdCallback();
+        if (cb != null) {
+            try {
+                effLangId = cb.getEffectiveLangId();
+            }
+            catch (Exception ex) {
+                effLangId = null;
+            }
+        }
+        else {
+            effLangId = null;
+        }
+
+        if (effLangId == null) {
+            effLangId = getSystemLangCode();
+            if (effLangId == null || effLangId.isEmpty()) {
+                effLangId = "en";
+            }
+        }
+
+        return effLangId;
+    }
+
+    /**
      * Get a translation for a given key in the current system language, probing each of the path entries in order
      * until a non-null translation is found.  If no translation is found, it returns "!key!".
      * @param key The translation key to look up.
@@ -205,7 +272,7 @@ public class Inz {
         if (key == null || key.isEmpty()) {
             throw new IllegalArgumentException("Key cannot be null or empty.");
         }
-        return x(key, systemLangCode); // Use the current system language code
+        return x(key, getEffectiveLangId());
     }
 
     /**
