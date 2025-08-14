@@ -294,11 +294,24 @@ public class Inz {
             throw new IllegalArgumentException("Language code cannot be null or empty.");
         }
         String lowerLangCode = langCode.toLowerCase();
-        for (int i = entries.size() - 1; i >= 0; i--) {
-            InzEntry entry = entries.get(i);
-            String translation = entry.x(key, lowerLangCode);
-            if (translation != null) {
-                return translation; // Return the first non-null translation found
+        while (lowerLangCode != null) {
+            for (int i = entries.size() - 1; i >= 0; i--) {
+                InzEntry entry = entries.get(i);
+                String translation = entry.x(key, lowerLangCode);
+                if (translation != null) {
+                    return translation; // Return the first non-null translation found
+                }
+            }
+            if (lowerLangCode.length() == 5) {
+                lowerLangCode = lowerLangCode.substring(0,1);
+            }
+            else {
+                if ("en".equals(lowerLangCode)) {
+                    lowerLangCode = null;
+                }
+                else {
+                    lowerLangCode = "en";
+                }
             }
         }
         // If no translation is found, return the key wrapped in exclamation marks

@@ -134,78 +134,27 @@ public class InzEntry {
             String loadedLangCodeString;
             String englishName;
             String nlsName;
-            String fallbackLangCode;
 
-            if (isCFLibInzEntry) {
-                loadedLangCodeString = properties.getProperty(InzLang.LANG_CODE_PROP);
-                if (loadedLangCodeString == null || loadedLangCodeString.isEmpty()) {
-                    throw new IllegalArgumentException("Language file " + propname + " must contain " +
-                            InzLang.LANG_CODE_PROP + " property for path entry " + pathEntry.getPath());
-                }
-                if (!loadedLangCodeString.toLowerCase().equals(langCode.toLowerCase())) {
-                    throw new IllegalArgumentException("Language file " + propname + " has mismatched language code: " +
-                            loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase() + " for path entry " + pathEntry.getPath());
-                }
-                englishName = properties.getProperty(InzLang.ENGLISH_NAME_PROP);
-                nlsName = properties.getProperty(InzLang.NLS_NAME_PROP);
-                if (englishName == null || nlsName == null || englishName.isEmpty() || nlsName.isEmpty()) {
-                    throw new IllegalArgumentException("Language file " + propname + " must contain " +
-                            InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties for path entry " + pathEntry.getPath());
-                }
-                fallbackLangCode = properties.getProperty(InzLang.FALLBACK_LANG_PROP);
+            loadedLangCodeString = properties.getProperty(InzLang.LANG_CODE_PROP);
+            if (loadedLangCodeString == null || loadedLangCodeString.isEmpty()) {
+                throw new IllegalArgumentException("Language file " + propname + " must contain " +
+                        InzLang.LANG_CODE_PROP + " property for path entry " + pathEntry.getPath());
             }
-            else {
-                InzLang existingLang = Inz.CFLIB_INZ_ENTRY.getLang(langCode.toLowerCase());
-                if (existingLang != null) {
-                    loadedLangCodeString = existingLang.getLangCode();
-                    englishName = existingLang.getEnglishName();
-                    nlsName = existingLang.getNlsName();
-                    fallbackLangCode = existingLang.getFallbackLangCode();
-                }
-                else {
-                    throw new IllegalArgumentException("CFLib InzEntry does not contain language code: " + langCode + " for path entry " + pathEntry.getPath());
-                }
+            if (!loadedLangCodeString.toLowerCase().equals(langCode.toLowerCase())) {
+                throw new IllegalArgumentException("Language file " + propname + " has mismatched language code: " +
+                        loadedLangCodeString.toLowerCase() + ", expected: " + langCode.toLowerCase() + " for path entry " + pathEntry.getPath());
+            }
+            englishName = properties.getProperty(InzLang.ENGLISH_NAME_PROP);
+            nlsName = properties.getProperty(InzLang.NLS_NAME_PROP);
+            if (englishName == null || nlsName == null || englishName.isEmpty() || nlsName.isEmpty()) {
+                throw new IllegalArgumentException("Language file " + propname + " must contain " +
+                        InzLang.ENGLISH_NAME_PROP + " and " + InzLang.NLS_NAME_PROP + " properties for path entry " + pathEntry.getPath());
             }
 
             // Create an InzLang instance and add it to the langs map
-            InzLang lang = new InzLang(langCode.toLowerCase(), englishName, nlsName, (fallbackLangCode != null ? fallbackLangCode.toLowerCase() : null));
+            InzLang lang = new InzLang(langCode.toLowerCase(), englishName, nlsName);
             lang.setTranslations(properties);
             langs.put(langCode, lang);
-        }
-            
-        // Link the fallback languages
-        for (InzLang lang : langs.values()) {
-            String fallbackCode = lang.getFallbackLangCode();
-            if (fallbackCode != null && !fallbackCode.isEmpty()) {
-                InzLang fallbackLang = langs.get(fallbackCode.toLowerCase());
-                if (fallbackLang != null) {
-                    lang.setFallbackLang(fallbackLang);
-                } else {
-                    throw new IllegalArgumentException("Fallback language " + fallbackCode + " not found for language " + lang.getLangCode() + " for path entry " + pathEntry.getPath());
-                }
-            }
-            else {
-                String iso639 = lang.getIso639();
-                String iso3166 = lang.getIso3166();
-                if (iso3166 != null) {
-                    // If no fallback is specified, set the fallback to the default English language
-                    InzLang defaultLang = langs.get(iso639.toLowerCase());
-                    if (defaultLang != null) {
-                        lang.setFallbackLang(defaultLang);
-                    } else {
-                        throw new IllegalArgumentException("Fallback base language " + iso639 + " not found for language " + lang.getLangCode() + " for path entry " + pathEntry.getPath());
-                    }
-                }
-                else {
-                    // If no fallback is specified and no ISO codes are available, set the fallback to "en"
-                    InzLang defaultLang = langs.get("en");
-                    if (defaultLang != null) {
-                        lang.setFallbackLang(defaultLang);
-                    } else {
-                        throw new IllegalArgumentException("Default fallback language 'en' not found for language " + lang.getLangCode().toLowerCase() + " for path entry " + pathEntry.getPath());
-                    }
-                }
-            }
         }
     }
 

@@ -26,14 +26,10 @@ import java.util.Properties;
 /**
  * InzLang is a language property loader/container for the translations associated with a given language code.
  * There are 3 properties required for each .properties file associated with an InzLang instance: _InzLangCode (primary key),
- * _InzEnglishName, and _InzNlsName (the NLS name for the language in the regional dialect of the language.)  Every .properties
- * file for loading can also define an explicit _InzFallbackLangCode, forming a tree of language codes used as fallbacks for
- * any translations not found in the current InzLang instance. Note that only String properties are allowed in an InzLang
- * .properties file.
+ * _InzEnglishName, and _InzNlsName (the NLS name for the language in the regional dialect of the language.)
  * 
  * _InzLangCode is either a 2-letter ISO-639 code, or a 5-character value consisting of a 2-letter ISO-639 code followed by "-"
- * and a ISO 3166-1 alpha-2 code for the country/region of specialization. Thus "en-ca" has an implicit _InzFallbackLangCode
- * of "en". You could override this, for example "pt" might fall back to "es" instead of the default "en".
+ * and a ISO 3166-1 alpha-2 code for the country/region of specialization. Thus "fr-ca" falls back to "fr" and then "en" for probing.
  * 
  * The translations attribute is the loaded .properties for the language translations themselves.  InzLang is a reference to the
  * cached, loaded InzLang instance for the fallback language.
@@ -63,32 +59,27 @@ public class InzLang implements Comparable<InzLang> {
     public final static String LANG_CODE_PROP = "_InzLangCode";
     public final static String ENGLISH_NAME_PROP = "_InzEnglishName";
     public final static String NLS_NAME_PROP = "_InzNlsName";
-    public final static String FALLBACK_LANG_PROP = "_InzFallbackLangCode";
     protected String langCode = null;
     protected String englishName = null;
     protected String nlsName = null;
-    protected String fallbackLangCode = null;
 
     protected String iso639 = null;
     protected String iso3166 = null;
     protected Properties translations = null;
-    protected InzLang fallbackLang = null;
 
     public InzLang() {};
 
+    /**
+     * Construct and InzLang specifying the langCode, englishName, and nlsName, in that order.
+     * 
+     * @param langCode
+     * @param englishName
+     * @param nlsName
+     */
     public InzLang(String langCode, String englishName, String nlsName) {
         setLangCode(langCode);
         setEnglishName(englishName);
         setNlsName(nlsName);
-        // Setting the langCode implicitly sets the fallbackLangCode in this case
-        // this.fallbackLangCode = null; // default to null, which means "en" for 2-letter codes
-    }
-
-    public InzLang(String langCode, String englishName, String nlsName, String fallbackLangCode) {
-        setLangCode(langCode);
-        setEnglishName(englishName);
-        setNlsName(nlsName);
-        setFallbackLangCode(fallbackLangCode);
     }
 
     /**
@@ -97,7 +88,6 @@ public class InzLang implements Comparable<InzLang> {
      * followed by a hyphen and a 2-letter ISO 3166-1 alpha-2 code.
      *
      * @see #setLangCode(String)
-     * @see #getFallbackLangCode()
      * @see #getIso639()
      * @see #getIso3166()
      * 
@@ -117,7 +107,6 @@ public class InzLang implements Comparable<InzLang> {
      * If the langCode is 5 characters, it sets the iso639 and iso3166 properties accordingly.
      *
      * @see #getLangCode()
-     * @see #getFallbackLangCode()
      * @see #getIso639()
      * @see #getIso3166()
      *
@@ -133,14 +122,6 @@ public class InzLang implements Comparable<InzLang> {
             this.langCode = langCode.toLowerCase();
             this.iso639 = langCode;
             this.iso3166 = null;
-            if (this.fallbackLangCode == null) {
-                if (this.langCode.equals("en")) {
-                    this.fallbackLangCode = null;
-                }
-                else {
-                    this.fallbackLangCode = "en";
-                }
-            }
         }
         else if (langCode.length() == 5) {
             if(langCode.charAt(2) != '-') {
@@ -149,9 +130,6 @@ public class InzLang implements Comparable<InzLang> {
             this.langCode = langCode.toLowerCase();
             this.iso639 = langCode.substring(0, 1);
             this.iso3166 = langCode.substring(3, 4);
-            if (this.fallbackLangCode == null) {
-                this.fallbackLangCode = this.iso639;
-            }
         }
         else {
             throw new IllegalArgumentException("langCode must be either 2 or 5 characters");
@@ -218,43 +196,6 @@ public class InzLang implements Comparable<InzLang> {
     }
 
     /**
-     * Returns the fallback language code for this InzLang instance.
-     * The fallbackLangCode is used when a translation for a key is not found in the current language's translations.
-     * It can be null, which means no fallback is defined.
-     *
-     * @see #setFallbackLangCode(String)
-     * @return the fallback language code as a String, or null if not set.
-     */
-    public final String getFallbackLangCode() {
-        return fallbackLangCode;
-    }
-
-    /**
-     * Sets the fallback language code for this InzLang instance.
-     * The fallbackLangCode must be either a 2-letter ISO-639 code or a 5-character code consisting of a 2-letter ISO-639 code
-     * followed by a hyphen and a 2-letter ISO 3166-1 alpha-2 code.
-     * If the fallbackLangCode is null, it defaults to "en" for 2-letter codes.
-     *
-     * @see #getFallbackLangCode()
-     *
-     * @throws IllegalArgumentException if fallbackLangCode is null, empty, or blank, or if it is not 2 or 5 characters long,
-     *         or if a 5-character fallbackLangCode does not have a hyphen separating the codes.
-     * @param fallbackLangCode the fallback language code as a String.
-     */
-    public final void setFallbackLangCode(String fallbackLangCode) {
-        if (fallbackLangCode != null && (fallbackLangCode.isEmpty() || fallbackLangCode.isBlank())) {
-            throw new IllegalArgumentException("fallbackLangCode is not null or a valid value");
-        }
-        if (fallbackLangCode != null && fallbackLangCode.length() != 2 && fallbackLangCode.length() != 5) {
-            throw new IllegalArgumentException("fallbackLangCode is not a valid length");
-        }
-        if (fallbackLangCode != null && fallbackLangCode.length() == 5 && fallbackLangCode.charAt(2) != '-') {
-            throw new IllegalArgumentException("5-character fallbackLangCode must be separated by a hyphen in between the pair of 2-letter codes");
-        }
-        this.fallbackLangCode = (fallbackLangCode != null) ? fallbackLangCode.toLowerCase() : null;
-    }
-
-    /**
      * Returns the ISO 639 code for this InzLang instance.
      * This is the 2-letter ISO-639 code that represents the language.
      *
@@ -305,35 +246,6 @@ public class InzLang implements Comparable<InzLang> {
     }
 
     /**
-     * Sets the fallback language for this InzLang instance.
-     * The fallbackLang is another InzLang instance that will be used to retrieve translations if the current language does not
-     * have a translation for a given key.
-     *
-     * @see #getFallbackLang()
-     *
-     * @throws IllegalArgumentException if fallbackLang is null.
-     * @param fallbackLang the InzLang instance to use as a fallback for translations.
-     */
-    protected void setFallbackLang(InzLang fallbackLang) {
-        if (fallbackLang == null) {
-            throw new IllegalArgumentException("fallbackLang cannot be null");
-        }
-        this.fallbackLang = fallbackLang;
-    }
-    
-    /** 
-     * Returns the fallback language for this InzLang instance.
-     * The fallbackLang is another InzLang instance that will be used to retrieve translations if the current language does not
-     * have a translation for a given key.
-     *
-     * @see #setFallbackLang(InzLang)
-     * @return the InzLang instance used as a fallback for translations, or null if no fallback is set.
-     */
-    protected final InzLang getFallbackLang() {
-        return fallbackLang;
-    }
-
-    /**
      * Retrieves a translation for a given key from the translations of this InzLang instance.
      * If the key is not found in the current language's translations, it falls back to the fallback language's translations.
      *
@@ -347,9 +259,6 @@ public class InzLang implements Comparable<InzLang> {
             throw new IllegalStateException("Translations not loaded for language: " + langCode);
         }
         String value = translations.getProperty(key);
-        if (value == null && fallbackLang != null) {
-            value = fallbackLang.x(key); // Fallback to the fallback language
-        }
         return value;
     }
 
@@ -444,7 +353,6 @@ public class InzLang implements Comparable<InzLang> {
                 "langCode='" + langCode + '\'' +
                 ", englishName='" + englishName + '\'' +
                 ", nlsName='" + nlsName + '\'' +
-                ", fallbackLangCode='" + fallbackLangCode + '\'' +
                 ", iso639='" + iso639 + '\'' +
                 ", iso3166='" + iso3166 + '\'' +
                 '}';
@@ -483,21 +391,10 @@ public class InzLang implements Comparable<InzLang> {
         }
         setNlsName(nlsName);
         
-        String fallbackLangCode = properties.getProperty(FALLBACK_LANG_PROP);
-        if (fallbackLangCode != null && !fallbackLangCode.isEmpty() && !fallbackLangCode.isBlank()) {
-            setFallbackLangCode(fallbackLangCode);
-        } else {
-            // If no fallbackLangCode is provided, default to "en" for 2-letter codes
-            if (langCode.length() == 2 && this.fallbackLangCode == null) {
-                this.fallbackLangCode = "en";
-            }
-        }
-        
         // Load translations from the properties object, excluding the special keys
         Properties translations = new Properties();
         for (String key : properties.stringPropertyNames()) {
-            if (!key.equals(LANG_CODE_PROP) && !key.equals(ENGLISH_NAME_PROP) &&
-                !key.equals(NLS_NAME_PROP) && !key.equals(FALLBACK_LANG_PROP)) {
+            if (!key.equals(LANG_CODE_PROP) && !key.equals(ENGLISH_NAME_PROP) && !key.equals(NLS_NAME_PROP)) {
                 translations.setProperty(key, properties.getProperty(key));
             }
         }
@@ -539,8 +436,5 @@ public class InzLang implements Comparable<InzLang> {
         translations.setProperty(LANG_CODE_PROP, langCode);
         translations.setProperty(ENGLISH_NAME_PROP, englishName);
         translations.setProperty(NLS_NAME_PROP, nlsName);
-        if (fallbackLangCode != null) {
-            translations.setProperty(FALLBACK_LANG_PROP, fallbackLangCode);
-        }
     }
 }
