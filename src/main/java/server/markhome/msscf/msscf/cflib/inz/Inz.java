@@ -249,11 +249,12 @@ public class Inz {
             effLangId = null;
         }
 
-        if (effLangId == null) {
+        if (effLangId == null || effLangId.isEmpty()) {
             effLangId = getSystemLangCode();
-            if (effLangId == null || effLangId.isEmpty()) {
-                effLangId = "en";
-            }
+        }
+
+        if (effLangId == null || effLangId.isEmpty()) {
+            effLangId = "en";
         }
 
         return effLangId;
@@ -292,6 +293,9 @@ public class Inz {
         }
         if (langCode == null || langCode.isEmpty()) {
             throw new IllegalArgumentException("Language code cannot be null or empty.");
+        }
+        if (langCode.length() != 2 && !(langCode.length() == 5 && langCode.charAt(2) == '-')) {
+            throw new IllegalArgumentException("Language code must be a 2-character or 5-character language code");
         }
         String lowerLangCode = langCode.toLowerCase();
         while (lowerLangCode != null) {

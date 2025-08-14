@@ -391,12 +391,9 @@ public class InzLang implements Comparable<InzLang> {
         }
         setNlsName(nlsName);
         
-        // Load translations from the properties object, excluding the special keys
         Properties translations = new Properties();
         for (String key : properties.stringPropertyNames()) {
-            if (!key.equals(LANG_CODE_PROP) && !key.equals(ENGLISH_NAME_PROP) && !key.equals(NLS_NAME_PROP)) {
-                translations.setProperty(key, properties.getProperty(key));
-            }
+            translations.setProperty(key, properties.getProperty(key));
         }
         setTranslations(translations);
     }

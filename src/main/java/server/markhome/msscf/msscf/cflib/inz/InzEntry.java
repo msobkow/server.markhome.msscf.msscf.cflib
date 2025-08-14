@@ -85,7 +85,6 @@ public class InzEntry {
      * It does not handle malformed files or unexpected formats, which should be validated before calling this method.
      */
     protected final void loadLangs() {
-        boolean isCFLibInzEntry = pathEntry.getPath().equals(Inz.CFLIB_INZ_PATH);
         String propnames;
         InputStream input = pathEntry.getInputStream("propnames.txt");
         if (input == null) {
