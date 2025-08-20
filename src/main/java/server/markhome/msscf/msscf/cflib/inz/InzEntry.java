@@ -158,6 +158,16 @@ public class InzEntry {
     }
 
     /**
+     * Search for a translation for the given key using the Inz.getEffectiveLangId() value.
+     * 
+     * @param key
+     * @return
+     */
+    public String x(String key) {
+        return x(key, Inz.getEffectiveLangCode());
+    }
+
+    /**
      * Search for a translation for the given key, starting with the specified language code.
      * If the key is not found in the specified language, it will search through the fallback languages
      * until it finds a match or exhausts all options.

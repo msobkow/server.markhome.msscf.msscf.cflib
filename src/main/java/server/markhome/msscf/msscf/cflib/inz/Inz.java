@@ -63,7 +63,7 @@ public class Inz {
      */
     protected static String systemLangCode = DEFAULT_LANG_CODE;
 
-    protected static AtomicReference<IInzEffectiveLangId> effectiveLangCallback = new AtomicReference(null);
+    protected static AtomicReference<IInzEffectiveLangCode> effectiveLangCallback = new AtomicReference(null);
 
     /**
      * The CFLib InzEntry references resource:server/markhome/msscf/msscf/cflib/inz/langs and
@@ -192,6 +192,12 @@ public class Inz {
         if (langCode == null || langCode.isEmpty()) {
             throw new IllegalArgumentException("Language code cannot be null or empty.");
         }
+        if (langCode.length() != 2 && langCode.length() != 5) {
+            throw new IllegalArgumentException("Language code must be 2..5 characters");
+        }
+        if (langCode.length() == 5 && langCode.charAt(2) != '-') {
+            throw new IllegalArgumentException( "5-character language code must be separated in position 2 by a hyphen");
+        }
         systemLangCode = langCode.toLowerCase(); // Store the language code in lowercase for consistency
     }
 
@@ -201,18 +207,15 @@ public class Inz {
      * @param callback
      * @return The previously registered callback
      */
-    public static IInzEffectiveLangId installEffectiveLangIdCallback(IInzEffectiveLangId callback) {
-        if (callback == null) {
-            throw new IllegalArgumentException("callback cannot be null");
-        }
-        IInzEffectiveLangId prevCallback = effectiveLangCallback.get();
+    public static IInzEffectiveLangCode installEffectiveLangCodeCallback(IInzEffectiveLangCode callback) {
+        IInzEffectiveLangCode prevCallback = effectiveLangCallback.get();
         if (prevCallback != callback) {
             effectiveLangCallback.compareAndSet(prevCallback, callback);
             if (callback == effectiveLangCallback.get()) {
                 return prevCallback;
             }
             else {
-                throw new IllegalStateException("Error registering replacement Effective Language Id callback");
+                throw new IllegalStateException("Error registering replacement Effective Language Code callback");
             }
         }
         else {
@@ -225,7 +228,7 @@ public class Inz {
      * 
      * @return The IInzEffectiveLangId callback that was most recently installed; initially null.
      */
-    public static IInzEffectiveLangId getEffectiveLangIdCallback() {
+    public static IInzEffectiveLangCode getEffectiveLangCodeCallback() {
         return effectiveLangCallback.get();
     }
 
@@ -234,30 +237,30 @@ public class Inz {
      * 
      * @return The current effective language id.
      */
-    public static String getEffectiveLangId() {
-        String effLangId;
-        IInzEffectiveLangId cb = getEffectiveLangIdCallback();
+    public static String getEffectiveLangCode() {
+        String effLangCode;
+        IInzEffectiveLangCode cb = getEffectiveLangCodeCallback();
         if (cb != null) {
             try {
-                effLangId = cb.getEffectiveLangId();
+                effLangCode = cb.getEffectiveLangCode();
             }
             catch (Exception ex) {
-                effLangId = null;
+                effLangCode = null;
             }
         }
         else {
-            effLangId = null;
+            effLangCode = null;
         }
 
-        if (effLangId == null || effLangId.isEmpty()) {
-            effLangId = getSystemLangCode();
+        if (effLangCode == null || effLangCode.isEmpty()) {
+            effLangCode = getSystemLangCode();
         }
 
-        if (effLangId == null || effLangId.isEmpty()) {
-            effLangId = "en";
+        if (effLangCode == null || effLangCode.isEmpty()) {
+            effLangCode = "en";
         }
 
-        return effLangId;
+        return effLangCode;
     }
 
     /**
@@ -273,7 +276,7 @@ public class Inz {
         if (key == null || key.isEmpty()) {
             throw new IllegalArgumentException("Key cannot be null or empty.");
         }
-        return x(key, getEffectiveLangId());
+        return x(key, getEffectiveLangCode());
     }
 
     /**

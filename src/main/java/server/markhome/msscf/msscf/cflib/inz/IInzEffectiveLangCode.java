@@ -21,15 +21,15 @@
 package server.markhome.msscf.msscf.cflib.inz;
 
 /**
- *  IInzEffectiveLangId callbacks implementing this interface are registered with Inz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
+ *  IInzEffectiveLangCode callbacks implementing this interface are registered with Inz to allow different user presentation layers to wire a current-session-language type hook based on the APIs for the presentation layer, instead of making assumptions or imposing restrictions on how such callbacks are registered.
  * 
  *  @see Inz
  */
-public interface IInzEffectiveLangId {
+public interface IInzEffectiveLangCode {
 
     /**
      * Get the current effective language id for NLS translation.
      * @return
      */
-    public String getEffectiveLangId();
+    public String getEffectiveLangCode();
 }
